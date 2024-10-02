@@ -1,4 +1,4 @@
-package codes.pnk.trithemiusvault;
+package codes.pnk;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

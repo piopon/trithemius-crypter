@@ -1,4 +1,4 @@
-package codes.pnk.trithemiusvault;
+package codes.pnk;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
