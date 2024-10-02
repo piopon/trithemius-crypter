@@ -1,0 +1,40 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+name: Build
+
+on:
+  pull_request:
+    branches: 'main'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        runner:
+          - os: ubuntu-latest
+            name: Linux
+            deploy-snapshots: false
+          - os: windows-latest
+            name: Windows
+            deploy-snapshots: false
+          - os: macos-latest
+            name: MacOS
+            deploy-snapshots: false
+    name: Build (${{ matrix.runner.name }})
+    runs-on: ${{ matrix.runner.os }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Maven verify
+        if: ${{ !matrix.runner.deploy-snapshots }}
+        run: ./mvnw --no-transfer-progress --batch-mode --update-snapshots verify
+      - name: Maven deploy
+        if: ${{ matrix.runner.deploy-snapshots }}
+        run: ./mvnw --no-transfer-progress --batch-mode --update-snapshots -DaltDeploymentRepository=local::file:./maven-repo/ deploy
