@@ -14,10 +14,13 @@ jobs:
         runner:
           - os: ubuntu-latest
             name: Linux
+            deploy-snapshots: false
           - os: windows-latest
             name: Windows
+            deploy-snapshots: false
           - os: macos-latest
             name: MacOS
+            deploy-snapshots: false
     name: Build (${{ matrix.runner.name }})
     runs-on: ${{ matrix.runner.os }}
     steps:
@@ -30,4 +33,5 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
       - name: Maven verify
+        if: ${{ !matrix.runner.deploy-snapshots }}
         run: ./mvnw --no-transfer-progress --batch-mode --update-snapshots verify
