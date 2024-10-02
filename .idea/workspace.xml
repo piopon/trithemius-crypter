@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4096e2ad-5e51-43dc-9527-7900290ac23d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/codes/pnk/trithemiusvault/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codes/pnk/trithemiusvault/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/codes/pnk/trithemiusvault/hello-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +42,7 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="codes.pnk.trithemiusvault.HelloApplication" />
+      <option name="MAIN_CLASS_NAME" value="codes.pnk.HelloApplication" />
       <module name="trithemius-vault" />
       <extension name="coverage">
         <pattern>
