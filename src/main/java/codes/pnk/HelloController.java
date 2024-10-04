@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -14,9 +15,11 @@ public class HelloController implements Initializable {
     private Label welcomeText;
     @FXML
     private Button button;
+    private FileChooser fileChooser;
     private Stage stage;
 
     public HelloController(Stage stage) {
+        this.fileChooser = new FileChooser();
         this.stage = stage;
     }
 
