@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,7 +28,10 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         welcomeText.setText("No file selected");
         button.setOnAction(actionEvent -> {
-            welcomeText.setText("Changed!");
+            File file = fileChooser.showOpenDialog(stage);
+            if (file != null) {
+                welcomeText.setText(file.toString());
+            }
         });
     }
 }
