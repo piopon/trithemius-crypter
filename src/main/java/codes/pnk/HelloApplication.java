@@ -1,5 +1,6 @@
 package codes.pnk;
 
+import codes.pnk.controller.HelloController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

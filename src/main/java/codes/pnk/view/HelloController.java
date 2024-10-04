@@ -1,4 +1,4 @@
-package codes.pnk;
+package codes.pnk.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
