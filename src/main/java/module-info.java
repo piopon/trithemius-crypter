@@ -7,4 +7,7 @@ module codes.pnk {
     opens codes.pnk to javafx.fxml;
 
     exports codes.pnk;
+    opens codes.pnk.controller to javafx.fxml;
+    exports codes.pnk.view;
+    opens codes.pnk.view to javafx.fxml;
 }

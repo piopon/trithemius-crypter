@@ -1,22 +1,26 @@
-package codes.pnk;
+package codes.pnk.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class FxmlController implements Initializable {
     @FXML
     private Label welcomeText;
     @FXML
     private Button button;
+    private FileChooser fileChooser;
     private Stage stage;
 
-    public HelloController(Stage stage) {
+    public FxmlController(Stage stage) {
+        this.fileChooser = new FileChooser();
         this.stage = stage;
     }
 
@@ -24,7 +28,10 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         welcomeText.setText("No file selected");
         button.setOnAction(actionEvent -> {
-            welcomeText.setText("Changed!");
+            File file = fileChooser.showOpenDialog(stage);
+            if (file != null) {
+                welcomeText.setText(file.toString());
+            }
         });
     }
 }
