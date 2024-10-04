@@ -1,4 +1,4 @@
-package codes.pnk.controller;
+package codes.pnk.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +11,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class FxmlController implements Initializable {
     @FXML
     private Label welcomeText;
     @FXML
@@ -19,7 +19,7 @@ public class HelloController implements Initializable {
     private FileChooser fileChooser;
     private Stage stage;
 
-    public HelloController(Stage stage) {
+    public FxmlController(Stage stage) {
         this.fileChooser = new FileChooser();
         this.stage = stage;
     }
