@@ -13,13 +13,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
+    private FileChooser fileChooser = new FileChooser();
+    private final ViewModel viewModel;
+    private Stage stage;
+
     @FXML
     private Label welcomeText;
     @FXML
     private Button button;
-    private FileChooser fileChooser = new FileChooser();
-    private final ViewModel viewModel;
-    private Stage stage;
 
     public FxmlController(final ViewModel viewModel, final Stage stage) {
         this.viewModel = viewModel;
