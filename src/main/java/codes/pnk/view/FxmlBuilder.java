@@ -1,6 +1,7 @@
 package codes.pnk.view;
 
 import codes.pnk.Main;
+import codes.pnk.model.presentation.ViewModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -10,9 +11,11 @@ import javafx.util.Builder;
 import java.io.IOException;
 
 public class FxmlBuilder  implements Builder<Region> {
+    private final ViewModel viewModel;
     private final Stage stage;
 
-    public FxmlBuilder(Stage stage) {
+    public FxmlBuilder(final ViewModel viewModel, final Stage stage) {
+        this.viewModel = viewModel;
         this.stage = stage;
     }
 
@@ -20,7 +23,7 @@ public class FxmlBuilder  implements Builder<Region> {
     public Region build() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view.fxml"));
-            FxmlController controller = new FxmlController(stage);
+            FxmlController controller = new FxmlController(viewModel, stage);
             fxmlLoader.setController(controller);
             return fxmlLoader.load();
         } catch (IOException e) {

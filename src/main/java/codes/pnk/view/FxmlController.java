@@ -1,5 +1,6 @@
 package codes.pnk.view;
 
+import codes.pnk.model.presentation.ViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,11 +17,12 @@ public class FxmlController implements Initializable {
     private Label welcomeText;
     @FXML
     private Button button;
-    private FileChooser fileChooser;
+    private FileChooser fileChooser = new FileChooser();
+    private final ViewModel viewModel;
     private Stage stage;
 
-    public FxmlController(Stage stage) {
-        this.fileChooser = new FileChooser();
+    public FxmlController(ViewModel viewModel, Stage stage) {
+        this.viewModel = viewModel;
         this.stage = stage;
     }
 
