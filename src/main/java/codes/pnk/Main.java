@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(final Stage stage) {
         Scene scene = new Scene(new ViewController(stage).getView(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);

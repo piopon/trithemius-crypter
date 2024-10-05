@@ -9,7 +9,7 @@ public class ViewController {
     private final ViewModel viewModel = new ViewModel();
     private final FxmlBuilder viewBuilder;
 
-    public ViewController(Stage stage) {
+    public ViewController(final Stage stage) {
         this.viewBuilder = new FxmlBuilder(viewModel, stage);
     }
 

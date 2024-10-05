@@ -21,13 +21,13 @@ public class FxmlController implements Initializable {
     private final ViewModel viewModel;
     private Stage stage;
 
-    public FxmlController(ViewModel viewModel, Stage stage) {
+    public FxmlController(final ViewModel viewModel, final Stage stage) {
         this.viewModel = viewModel;
         this.stage = stage;
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(final URL url, final ResourceBundle resourceBundle) {
         welcomeText.setText("No file selected");
         button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(stage);
