@@ -1,5 +1,6 @@
 package codes.pnk.view;
 
+import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,24 +15,24 @@ import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
     private FileChooser fileChooser = new FileChooser();
+    private ViewConfig viewConfig;
     private final ViewModel viewModel;
-    private Stage stage;
 
     @FXML
     private Label welcomeText;
     @FXML
     private Button button;
 
-    public FxmlController(final ViewModel viewModel, final Stage stage) {
+    public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
+        this.viewConfig = viewConfig;
         this.viewModel = viewModel;
-        this.stage = stage;
     }
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
         welcomeText.setText("No file selected");
         button.setOnAction(actionEvent -> {
-            File file = fileChooser.showOpenDialog(stage);
+            File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 welcomeText.setText(file.toString());
             }

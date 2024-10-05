@@ -1,5 +1,6 @@
 package codes.pnk.controller;
 
+import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import codes.pnk.view.FxmlBuilder;
 import javafx.scene.layout.Region;
@@ -10,7 +11,7 @@ public class ViewController {
     private final FxmlBuilder viewBuilder;
 
     public ViewController(final Stage stage) {
-        this.viewBuilder = new FxmlBuilder(viewModel, stage);
+        this.viewBuilder = new FxmlBuilder(viewModel, new ViewConfig(stage));
     }
 
     public Region getView() {
