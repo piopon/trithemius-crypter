@@ -1,5 +1,6 @@
 package codes.pnk;
 
+import codes.pnk.controller.ViewController;
 import codes.pnk.view.FxmlController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ public class Main extends Application {
         FxmlController controller = new FxmlController(stage);
         fxmlLoader.setController(controller);
 
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(new ViewController(stage).getView(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
