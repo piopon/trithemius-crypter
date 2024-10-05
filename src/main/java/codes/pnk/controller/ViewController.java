@@ -11,10 +11,14 @@ public class ViewController {
     private final FxmlBuilder viewBuilder;
 
     public ViewController(final Stage stage) {
-        this.viewBuilder = new FxmlBuilder(viewModel, new ViewConfig(stage));
+        this.viewBuilder = new FxmlBuilder(viewModel, new ViewConfig(stage, this::startSteganography));
     }
 
     public Region getView() {
         return viewBuilder.build();
+    }
+
+    private void startSteganography(int mode) {
+        System.out.println("startSteganography -> " + mode);
     }
 }
