@@ -18,9 +18,13 @@ public class FxmlBuilder  implements Builder<Region> {
 
     @Override
     public Region build() {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view.fxml"));
-        FxmlController controller = new FxmlController(stage);
-        fxmlLoader.setController(controller);
-        return null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view.fxml"));
+            FxmlController controller = new FxmlController(stage);
+            fxmlLoader.setController(controller);
+            return fxmlLoader.load();
+        } catch (IOException e) {
+            return new BorderPane();
+        }
     }
 }
