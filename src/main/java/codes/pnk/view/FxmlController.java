@@ -7,15 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
-    private FileChooser fileChooser = new FileChooser();
-    private ViewConfig viewConfig;
+    private final FileChooser fileChooser = new FileChooser();
+    private final ViewConfig viewConfig;
     private final ViewModel viewModel;
 
     @FXML

@@ -6,7 +6,6 @@ import codes.pnk.model.presentation.ViewModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import javafx.stage.Stage;
 import javafx.util.Builder;
 
 import java.io.IOException;
