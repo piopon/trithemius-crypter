@@ -34,7 +34,7 @@ public class FxmlController implements Initializable {
         button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
-                viewModel.setTextFile(Optional.of(file));
+                viewModel.setTextFile(file);
                 updateWelcomeText();
                 viewConfig.action().accept(0);
             }
