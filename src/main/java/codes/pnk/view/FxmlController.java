@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
@@ -33,6 +34,7 @@ public class FxmlController implements Initializable {
         button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
+                viewModel.setTextFile(Optional.of(file));
                 updateWelcomeText();
                 viewConfig.action().accept(0);
             }
@@ -40,7 +42,7 @@ public class FxmlController implements Initializable {
     }
 
     private void updateWelcomeText() {
-        viewModel.textFile().ifPresentOrElse(file -> welcomeText.setText(file.toString()),
-                                             () -> welcomeText.setText("No file selected"));
+        viewModel.getTextFile().ifPresentOrElse(file -> welcomeText.setText(file.toString()),
+                                                () -> welcomeText.setText("No file selected"));
     }
 }
