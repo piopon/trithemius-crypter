@@ -20,9 +20,9 @@ public class FxmlController implements Initializable {
     private final ViewModel viewModel;
 
     @FXML
-    private TextField welcomeText;
+    private TextField fieldTextFile;
     @FXML
-    private Button button;
+    private Button buttonTextFile;
 
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
@@ -31,12 +31,12 @@ public class FxmlController implements Initializable {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        updateTextField(welcomeText, viewModel.getTextFile());
-        button.setOnAction(actionEvent -> {
+        updateTextField(fieldTextFile, viewModel.getTextFile());
+        buttonTextFile.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 viewModel.setTextFile(file);
-                updateTextField(welcomeText, viewModel.getTextFile());
+                updateTextField(fieldTextFile, viewModel.getTextFile());
                 viewConfig.action().accept(0);
             }
         });
