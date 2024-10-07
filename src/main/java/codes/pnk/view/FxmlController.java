@@ -31,18 +31,18 @@ public class FxmlController implements Initializable {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        updateFileText(welcomeText, viewModel.getTextFile());
+        updateTextField(welcomeText, viewModel.getTextFile());
         button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 viewModel.setTextFile(file);
-                updateFileText(welcomeText, viewModel.getTextFile());
+                updateTextField(welcomeText, viewModel.getTextFile());
                 viewConfig.action().accept(0);
             }
         });
     }
 
-    private void updateFileText(final TextField label, final Optional<File> value) {
-        value.ifPresentOrElse(file -> label.setText(file.toString()), () -> label.setText("No file selected"));
+    private <T> void updateTextField(final TextField field, final Optional<T> modelValue) {
+        modelValue.ifPresentOrElse(value -> field.setText(value.toString()), () -> field.setText("No file selected"));
     }
 }
