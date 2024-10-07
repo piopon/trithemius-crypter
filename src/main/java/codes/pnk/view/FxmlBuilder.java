@@ -27,6 +27,7 @@ public class FxmlBuilder  implements Builder<Region> {
             fxmlLoader.setController(controller);
             return fxmlLoader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             return new BorderPane();
         }
     }
