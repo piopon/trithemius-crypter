@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -19,7 +20,7 @@ public class FxmlController implements Initializable {
     private final ViewModel viewModel;
 
     @FXML
-    private Label welcomeText;
+    private TextField welcomeText;
     @FXML
     private Button button;
 
@@ -41,7 +42,7 @@ public class FxmlController implements Initializable {
         });
     }
 
-    private void updateFileText(final Label label, final Optional<File> value) {
+    private void updateFileText(final TextField label, final Optional<File> value) {
         value.ifPresentOrElse(file -> label.setText(file.toString()), () -> label.setText("No file selected"));
     }
 }

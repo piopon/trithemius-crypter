@@ -13,12 +13,7 @@
     <padding>
         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
     </padding>
-    <Text text="Welcome" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
-    <Label text="User Name:" fx:id="welcomeText" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button text="Sign In" fx:id="button"/>
-    </HBox>
+    <Text text="Image file" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+    <TextField fx:id="welcomeText" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <Button text="..." fx:id="buton" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 </GridPane>
