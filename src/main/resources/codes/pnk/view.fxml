@@ -15,5 +15,5 @@
     </padding>
     <Text text="Image file" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
     <TextField fx:id="welcomeText" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <Button text="..." fx:id="buton" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Button text="..." fx:id="button" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 </GridPane>
