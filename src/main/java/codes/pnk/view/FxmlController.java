@@ -22,7 +22,11 @@ public class FxmlController implements Initializable {
     @FXML
     private TextField fieldTextFile;
     @FXML
+    private TextField fieldImageFile;
+    @FXML
     private Button buttonTextFile;
+    @FXML
+    private Button buttonImageFile;
 
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
