@@ -11,7 +11,7 @@ import java.util.Optional;
 public final class ViewModel {
     private StringProperty imageFile;
     private StringProperty textFile;
-    private Path outputPath;
+    private StringProperty outputPath;
 
     public ViewModel() {
         this(null, null, null);
@@ -20,7 +20,7 @@ public final class ViewModel {
     public ViewModel(final File imageFile, final File textFile, final Path outputPath) {
         this.imageFile = new SimpleStringProperty(imageFile == null ? "" : imageFile.toString());
         this.textFile = new SimpleStringProperty(textFile == null ? "" : textFile.toString());
-        this.outputPath = outputPath;
+        this.outputPath = new SimpleStringProperty(outputPath == null ? "" : outputPath.toString());
     }
 
     public Optional<StringProperty> getImageFile() {
@@ -39,12 +39,12 @@ public final class ViewModel {
         this.textFile = new SimpleStringProperty(textFile.toString());
     }
 
-    public Optional<Path> getOutputPath() {
+    public Optional<StringProperty> getOutputPath() {
         return Optional.ofNullable(outputPath);
     }
 
     public void setOutputPath(final Path outputPath) {
-        this.outputPath = outputPath;
+        this.outputPath = new SimpleStringProperty(outputPath.toString());
     }
 
     @Override
