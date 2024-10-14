@@ -18,8 +18,8 @@ public final class ViewModel {
     }
 
     public ViewModel(final File imageFile, final File textFile, final Path outputPath) {
-        this.imageFile = new SimpleStringProperty(imageFile.toString());
-        this.textFile = new SimpleStringProperty(textFile.toString());
+        this.imageFile = new SimpleStringProperty(imageFile == null ? "" : imageFile.toString());
+        this.textFile = new SimpleStringProperty(textFile == null ? "" : textFile.toString());
         this.outputPath = outputPath;
     }
 
