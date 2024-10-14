@@ -39,12 +39,16 @@ public class FxmlController implements Initializable {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        updateTextField(fieldTextFile, viewModel.getTextFile());
-        buttonTextFile.setOnAction(actionEvent -> {
+        initializeField(fieldTextFile, buttonTextFile);
+    }
+
+    private void initializeField(TextField field, Button button) {
+        updateTextField(field, viewModel.getTextFile());
+        button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 viewModel.setTextFile(file);
-                updateTextField(fieldTextFile, viewModel.getTextFile());
+                updateTextField(field, viewModel.getTextFile());
                 viewConfig.action().accept(0);
             }
         });
