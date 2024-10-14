@@ -41,6 +41,7 @@ public class FxmlController implements Initializable {
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
         initializeFileField(fieldTextFile, buttonTextFile, viewModel.getTextFile());
+        initializeFileField(fieldImageFile, buttonImageFile, viewModel.getImageFile());
     }
 
     private void initializeFileField(TextField field, Button button, Optional<StringProperty> property) {
