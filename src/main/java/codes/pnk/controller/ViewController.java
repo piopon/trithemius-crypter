@@ -19,6 +19,13 @@ public class ViewController {
     }
 
     private void startSteganography(int mode) {
-        System.out.println("startSteganography -> " + mode);
+        System.out.println("Selected text file:   " + viewModel.getTextFile().get().getValue());
+        System.out.println("Selected image file:  " + viewModel.getImageFile().get().getValue());
+        System.out.println("Selected output path: " + viewModel.getOutputPath().get().getValue());
+        if(mode == 0) {
+            System.out.println("Start EMBED action");
+        } else {
+            System.out.println("startSteganography -> " + mode);
+        }
     }
 }
