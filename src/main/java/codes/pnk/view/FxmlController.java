@@ -32,6 +32,8 @@ public class FxmlController implements Initializable {
     private Button buttonImageFile;
     @FXML
     private Button buttonOutPath;
+    @FXML
+    private Button buttonActionEmbed;
 
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
@@ -42,6 +44,7 @@ public class FxmlController implements Initializable {
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
         initializeFileField(fieldTextFile, buttonTextFile, viewModel.getTextFile());
         initializeFileField(fieldImageFile, buttonImageFile, viewModel.getImageFile());
+        buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(0));
     }
 
     private void initializeFileField(TextField field, Button button, Optional<StringProperty> property) {
@@ -51,7 +54,6 @@ public class FxmlController implements Initializable {
             if (file != null) {
                 property.get().setValue(file.toString());
                 updateTextField(field, property);
-                viewConfig.action().accept(0);
             }
         });
     }
