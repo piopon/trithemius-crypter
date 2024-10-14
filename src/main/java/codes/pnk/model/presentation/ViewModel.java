@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public final class ViewModel {
-    private File imageFile;
+    private StringProperty imageFile;
     private StringProperty textFile;
     private Path outputPath;
 
@@ -18,17 +18,17 @@ public final class ViewModel {
     }
 
     public ViewModel(final File imageFile, final File textFile, final Path outputPath) {
-        this.imageFile = imageFile;
+        this.imageFile = new SimpleStringProperty(imageFile.toString());
         this.textFile = new SimpleStringProperty(textFile.toString());
         this.outputPath = outputPath;
     }
 
-    public Optional<File> getImageFile() {
+    public Optional<StringProperty> getImageFile() {
         return Optional.ofNullable(imageFile);
     }
 
     public void setImageFile(final File imageFile) {
-        this.imageFile = imageFile;
+        this.imageFile = new SimpleStringProperty(imageFile.toString());
     }
 
     public Optional<StringProperty> getTextFile() {
