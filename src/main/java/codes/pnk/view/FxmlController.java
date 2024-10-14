@@ -59,7 +59,7 @@ public class FxmlController implements Initializable {
         });
     }
 
-    private <T> void updateTextField(final TextField field, final Optional<T> modelValue) {
-        modelValue.ifPresentOrElse(value -> field.setText(value.toString()), () -> field.setText("No file selected"));
+    private <T> void updateTextField(final TextField field, final Optional<StringProperty> modelValue) {
+        modelValue.ifPresentOrElse(value -> field.setText(value.getValue()), () -> field.setText("No file selected"));
     }
 }
