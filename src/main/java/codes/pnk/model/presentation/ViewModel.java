@@ -27,24 +27,12 @@ public final class ViewModel {
         return Optional.ofNullable(imageFile);
     }
 
-    public void setImageFile(final File imageFile) {
-        this.imageFile = new SimpleStringProperty(imageFile.toString());
-    }
-
     public Optional<StringProperty> getTextFile() {
         return Optional.ofNullable(textFile);
     }
 
-    public void setTextFile(final File textFile) {
-        this.textFile = new SimpleStringProperty(textFile.toString());
-    }
-
     public Optional<StringProperty> getOutputPath() {
         return Optional.ofNullable(outputPath);
-    }
-
-    public void setOutputPath(final Path outputPath) {
-        this.outputPath = new SimpleStringProperty(outputPath.toString());
     }
 
     @Override
