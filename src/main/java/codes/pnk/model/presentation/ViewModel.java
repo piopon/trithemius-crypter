@@ -13,7 +13,7 @@ import java.util.Optional;
 public final class ViewModel {
     private final ObjectProperty<File> imageFile;
     private final ObjectProperty<File> textFile;
-    private final StringProperty outputPath;
+    private final ObjectProperty<Path> outputPath;
 
     public ViewModel() {
         this(null, null, null);
@@ -22,7 +22,7 @@ public final class ViewModel {
     public ViewModel(final File imageFile, final File textFile, final Path outputPath) {
         this.imageFile = new SimpleObjectProperty<>(imageFile);
         this.textFile = new SimpleObjectProperty<>(textFile);
-        this.outputPath = new SimpleStringProperty(outputPath == null ? "" : outputPath.toString());
+        this.outputPath = new SimpleObjectProperty<>(outputPath);
     }
 
     public ObjectProperty<File> getImageFile() {
@@ -33,8 +33,8 @@ public final class ViewModel {
         return textFile;
     }
 
-    public Optional<StringProperty> getOutputPath() {
-        return Optional.ofNullable(outputPath);
+    public ObjectProperty<Path> getOutputPath() {
+        return outputPath;
     }
 
     @Override
