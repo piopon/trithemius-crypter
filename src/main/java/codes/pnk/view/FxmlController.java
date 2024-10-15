@@ -46,7 +46,7 @@ public class FxmlController implements Initializable {
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
         initializeFileField(fieldTextFile, buttonTextFile, viewModel.getTextFile());
         initializeFileField(fieldImageFile, buttonImageFile, viewModel.getImageFile());
-        initializeFileField(fieldOutPath, buttonOutPath, viewModel.getOutputPath());
+        initializePathField(fieldOutPath, buttonOutPath, viewModel.getOutputPath());
         buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(0));
     }
 
