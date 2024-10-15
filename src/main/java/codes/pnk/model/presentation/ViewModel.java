@@ -1,5 +1,7 @@
 package codes.pnk.model.presentation;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -9,8 +11,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 public final class ViewModel {
-    private final StringProperty imageFile;
-    private final StringProperty textFile;
+    private final ObjectProperty<File> imageFile;
+    private final ObjectProperty<File> textFile;
     private final StringProperty outputPath;
 
     public ViewModel() {
@@ -18,17 +20,17 @@ public final class ViewModel {
     }
 
     public ViewModel(final File imageFile, final File textFile, final Path outputPath) {
-        this.imageFile = new SimpleStringProperty(imageFile == null ? "" : imageFile.toString());
-        this.textFile = new SimpleStringProperty(textFile == null ? "" : textFile.toString());
+        this.imageFile = new SimpleObjectProperty<>(imageFile);
+        this.textFile = new SimpleObjectProperty<>(textFile);
         this.outputPath = new SimpleStringProperty(outputPath == null ? "" : outputPath.toString());
     }
 
-    public Optional<StringProperty> getImageFile() {
-        return Optional.ofNullable(imageFile);
+    public ObjectProperty<File> getImageFile() {
+        return imageFile;
     }
 
-    public Optional<StringProperty> getTextFile() {
-        return Optional.ofNullable(textFile);
+    public ObjectProperty<File> getTextFile() {
+        return textFile;
     }
 
     public Optional<StringProperty> getOutputPath() {
