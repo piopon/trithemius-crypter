@@ -9,9 +9,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 public final class ViewModel {
-    private StringProperty imageFile;
-    private StringProperty textFile;
-    private StringProperty outputPath;
+    private final StringProperty imageFile;
+    private final StringProperty textFile;
+    private final StringProperty outputPath;
 
     public ViewModel() {
         this(null, null, null);
