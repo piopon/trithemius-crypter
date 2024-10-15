@@ -72,7 +72,7 @@ public class FxmlController implements Initializable {
         });
     }
 
-    private void updateTextField(final TextField field, final ObjectProperty<File> modelValue) {
+    private <T> void updateTextField(final TextField field, final ObjectProperty<T> modelValue) {
         if (modelValue.isNotNull().get()) {
             field.setText(modelValue.getValue().toString());
         } else {
