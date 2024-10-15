@@ -76,7 +76,7 @@ public class FxmlController implements Initializable {
         if (modelValue.isNotNull().get()) {
             field.setText(modelValue.getValue().toString());
         } else {
-            field.setText("No file selected");
+            field.setText("-- none selected --");
         }
     }
 }
