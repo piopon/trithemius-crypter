@@ -2,6 +2,7 @@ package codes.pnk.view;
 
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,12 +49,12 @@ public class FxmlController implements Initializable {
         buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(0));
     }
 
-    private void initializeFileField(TextField field, Button button, Optional<StringProperty> property) {
+    private void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
         updateTextField(field, property);
         button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
-                property.get().setValue(file.toString());
+                property.setValue(file);
                 updateTextField(field, property);
             }
         });
