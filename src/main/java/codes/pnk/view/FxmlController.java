@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -55,6 +56,17 @@ public class FxmlController implements Initializable {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 property.setValue(file);
+                updateTextField(field, property);
+            }
+        });
+    }
+
+    private void initializePathField(TextField field, Button button, ObjectProperty<Path> property) {
+        updateTextField(field, property);
+        button.setOnAction(actionEvent -> {
+            Path path = fileChooser.showOpenDialog(viewConfig.stage()).toPath();
+            if (path != null) {
+                property.setValue(path);
                 updateTextField(field, property);
             }
         });
