@@ -18,6 +18,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
+    private static String EMPTY_TEXT_FIELD = "-- none selected --";
+
     private final FileChooser fileChooser = new FileChooser();
     private final ViewConfig viewConfig;
     private final ViewModel viewModel;
@@ -73,10 +75,6 @@ public class FxmlController implements Initializable {
     }
 
     private <T> void updateTextField(final TextField field, final ObjectProperty<T> modelValue) {
-        if (modelValue.isNotNull().get()) {
-            field.setText(modelValue.getValue().toString());
-        } else {
-            field.setText("-- none selected --");
-        }
+        field.setText(modelValue.isNotNull().get() ? modelValue.getValue().toString() : EMPTY_TEXT_FIELD);
     }
 }
