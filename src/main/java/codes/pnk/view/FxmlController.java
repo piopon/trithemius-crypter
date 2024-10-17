@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -21,6 +22,7 @@ public class FxmlController implements Initializable {
     private static String EMPTY_TEXT_FIELD = "-- none selected --";
 
     private final FileChooser fileChooser = new FileChooser();
+    private final DirectoryChooser pathChooser = new DirectoryChooser();
     private final ViewConfig viewConfig;
     private final ViewModel viewModel;
 
@@ -66,9 +68,9 @@ public class FxmlController implements Initializable {
     private void initializePathField(TextField field, Button button, ObjectProperty<Path> property) {
         updateTextField(field, property);
         button.setOnAction(actionEvent -> {
-            Path path = fileChooser.showOpenDialog(viewConfig.stage()).toPath();
-            if (path != null) {
-                property.setValue(path);
+            File file = pathChooser.showDialog(viewConfig.stage());
+            if (file != null) {
+                property.setValue(file.toPath());
                 updateTextField(field, property);
             }
         });
