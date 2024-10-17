@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
-    private static String EMPTY_TEXT_FIELD = "-- none selected --";
+    private final static String EMPTY_TEXT_FIELD = "-- none selected --";
 
     private final FileChooser fileChooser = new FileChooser();
     private final DirectoryChooser pathChooser = new DirectoryChooser();
