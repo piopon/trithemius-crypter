@@ -3,11 +3,9 @@ package codes.pnk.view;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -15,7 +13,6 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {

@@ -2,13 +2,10 @@ package codes.pnk.model.presentation;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.util.Objects;
-import java.util.Optional;
 
 public final class ViewModel {
     private final ObjectProperty<File> imageFile;
