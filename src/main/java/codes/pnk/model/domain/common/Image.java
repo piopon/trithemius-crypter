@@ -1,22 +1,15 @@
 package codes.pnk.model.domain.common;
 
-import javax.imageio.metadata.IIOMetadata;
-import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class Image {
-    private final String name;
-    private final BufferedImage data;
-    private final IIOMetadata metadata;
 
-    public Image(final String name, final BufferedImage data, final IIOMetadata metadata) {
-        this.name = name;
-        this.data = data;
-        this.metadata = metadata;
+    private final File sourceFile;
+    private final byte[] data;
+
+    public Image(final File file) throws ImageException {
+        this.sourceFile = file;
     }
 
-    public Image(final String name, final byte[] data) {
-        this.name = name;
-        this.data = null;
-        this.metadata = null;
     }
 }
