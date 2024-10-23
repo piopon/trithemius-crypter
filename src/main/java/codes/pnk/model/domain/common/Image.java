@@ -2,6 +2,8 @@ package codes.pnk.model.domain.common;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.IOException;
 
 public class Image {
@@ -12,6 +14,11 @@ public class Image {
 
     public Image(final File file) throws ImageException {
         this.sourceFile = file;
+        try (InputStream is = new FileInputStream(file)) {
+            this.data = fileStreamToBytes(is);
+        } catch (IOException e) {
+            throw new ImageException("Cannot read image file: " + file.getAbsolutePath());
+        }
     }
 
     private byte[] fileStreamToBytes(InputStream is) throws ImageException {
