@@ -16,7 +16,7 @@ public class Image {
     public Image(final File file) throws ImageException {
         this.sourceFile = file;
         try (InputStream is = new FileInputStream(file)) {
-            this.data = fileStreamToBytes(is);
+            this.data = streamToBytes(is);
         } catch (IOException e) {
             throw new ImageException("Cannot read image file: " + file.getAbsolutePath());
         }
@@ -27,10 +27,10 @@ public class Image {
     }
 
     public BufferedImage getBufferedImage() throws ImageException {
-        return fileStreamToBufferedImage(new ByteArrayInputStream(this.data));
+        return streamToBufferedImage(new ByteArrayInputStream(this.data));
     }
 
-    private byte[] fileStreamToBytes(InputStream is) throws ImageException {
+    private byte[] streamToBytes(InputStream is) throws ImageException {
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
             int bytesRead;
             byte[] data = new byte[BUFFER_SIZE];
@@ -43,7 +43,7 @@ public class Image {
         }
     }
 
-    private BufferedImage fileStreamToBufferedImage(InputStream is) throws ImageException {
+    private BufferedImage streamToBufferedImage(InputStream is) throws ImageException {
         try {
             ImageInputStream imageStream = ImageIO.createImageInputStream(is);
             Iterator<ImageReader> readers = ImageIO.getImageReaders(imageStream);
