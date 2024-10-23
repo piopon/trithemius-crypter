@@ -1,10 +1,11 @@
 package codes.pnk.model.domain.common;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.Iterator;
 
 public class Image {
     private static final int BUFFER_SIZE = 512;
@@ -33,6 +34,21 @@ public class Image {
                 stream.write(data, 0, bytesRead);
             }
             return stream.toByteArray();
+        } catch (IOException e) {
+            throw new ImageException(e);
+        }
+    }
+
+    private BufferedImage fileStreamToBufferedImage(InputStream is) throws ImageException {
+        try {
+            ImageInputStream imageStream = ImageIO.createImageInputStream(is);
+            Iterator<ImageReader> readers = ImageIO.getImageReaders(imageStream);
+            if (!readers.hasNext()) {
+                return null;
+            }
+            ImageReader reader = readers.next();
+            reader.setInput(imageStream);
+            return reader.read(0);
         } catch (IOException e) {
             throw new ImageException(e);
         }
