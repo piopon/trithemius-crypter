@@ -26,6 +26,10 @@ public class Image {
         return data;
     }
 
+    public BufferedImage getBufferedImage() throws ImageException {
+        return fileStreamToBufferedImage(new ByteArrayInputStream(this.data));
+    }
+
     private byte[] fileStreamToBytes(InputStream is) throws ImageException {
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
             int bytesRead;
