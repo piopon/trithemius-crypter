@@ -22,6 +22,10 @@ public class Image {
         }
     }
 
+    public String getPath() {
+        return sourceFile.getAbsolutePath();
+    }
+
     public byte[] getRawImageData() {
         return data;
     }
