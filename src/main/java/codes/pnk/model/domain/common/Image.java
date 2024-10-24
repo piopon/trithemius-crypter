@@ -22,11 +22,11 @@ public class Image {
         }
     }
 
-    public byte[] getBytes() {
+    public byte[] getRawImageData() {
         return data;
     }
 
-    public BufferedImage getBufferedImage() throws ImageException {
+    public BufferedImage getBufferedImageData() throws ImageException {
         return streamToBufferedImage(new ByteArrayInputStream(this.data));
     }
 
