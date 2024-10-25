@@ -1,7 +1,9 @@
 package codes.pnk.model.domain.common;
 
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
+import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -60,5 +62,22 @@ public class Image {
         } catch (IOException e) {
             throw new ImageException(e);
         }
+    }
+
+    private byte[] bufferedImageToData(final BufferedImage bufferedImage) throws ImageException {
+        String imageName = sourceFile.getName();
+        String imageType = imageName.substring(imageName.lastIndexOf('.') + 1).toLowerCase();
+        if (imageType.equals("jp2")) {
+            imageType = "jpeg 2000";
+        }
+        ByteArrayOutputStream barrOS = new ByteArrayOutputStream();
+        try {
+            ImageWriter writer = ImageIO.getImageWritersByFormatName(imageType).next();
+            writer.setOutput(ImageIO.createImageOutputStream(barrOS));
+            writer.write(null, new IIOImage(bufferedImage, null, null), null);
+        } catch (IOException e) {
+            throw new ImageException(e);
+        }
+        return barrOS.toByteArray();
     }
 }
