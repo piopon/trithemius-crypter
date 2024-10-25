@@ -24,6 +24,10 @@ public class LsbOutputStream extends OutputStream {
         return;
     }
 
+    public BufferedImage getOutput() {
+        return this.output;
+    }
+
     private BufferedImage initializeOutputImage() throws ImageException {
         int imageWidth = this.image.getBufferedImageData().getWidth();
         int imageHeight = this.image.getBufferedImageData().getHeight();
