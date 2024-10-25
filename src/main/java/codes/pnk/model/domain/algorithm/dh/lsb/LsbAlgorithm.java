@@ -11,7 +11,17 @@ import java.io.IOException;
 public class LsbAlgorithm extends Algorithm {
     @Override
     public byte[] embed(Text inText, Image inImage) throws ImageException {
-        return new byte[0];
+        try {
+            BufferedImage outputImage = null;
+            try (LsbOutputStream lsbOS = new LsbOutputStream(inImage, inText)) {
+                lsbOS.write(inText.getData());
+                lsbOS.flush();
+                outputImage = lsbOS.getOutput();
+            }
+            return new Image(inImage.getPath(), outputImage).getRawImageData();
+        } catch (IOException e) {
+            throw new ImageException(e);
+        }
     }
 
     @Override
