@@ -24,6 +24,11 @@ public class Image {
         }
     }
 
+    public Image(final String imagePath, final BufferedImage bufferedImage) throws ImageException {
+        this.sourceFile = new File(imagePath);
+        this.data = bufferedImageToData(bufferedImage);
+    }
+
     public String getPath() {
         return sourceFile.getAbsolutePath();
     }
