@@ -1,5 +1,7 @@
 package codes.pnk.model.domain.common;
 
+import codes.pnk.model.domain.exception.ImageException;
+
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;

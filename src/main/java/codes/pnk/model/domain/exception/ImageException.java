@@ -1,4 +1,4 @@
-package codes.pnk.model.domain.common;
+package codes.pnk.model.domain.exception;
 
 public class ImageException extends Exception {
     public ImageException() {
