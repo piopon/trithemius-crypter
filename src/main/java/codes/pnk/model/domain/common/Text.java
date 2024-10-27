@@ -1,5 +1,7 @@
 package codes.pnk.model.domain.common;
 
+import codes.pnk.model.domain.exception.TextException;
+
 import java.io.*;
 
 public class Text {
@@ -19,7 +21,7 @@ public class Text {
         return null;
     }
 
-    private byte[] streamToBytes(InputStream is) throws IOException {
+    private byte[] streamToBytes(InputStream is) throws TextException {
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
             int bytesRead;
             byte[] data = new byte[BUFFER_SIZE];
@@ -27,6 +29,8 @@ public class Text {
                 stream.write(data, 0, bytesRead);
             }
             return stream.toByteArray();
+        } catch (IOException e) {
+            throw new TextException(e);
         }
     }
 }
