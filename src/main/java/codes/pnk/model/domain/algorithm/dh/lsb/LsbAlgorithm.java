@@ -26,7 +26,7 @@ public class LsbAlgorithm extends Algorithm {
     }
 
     @Override
-    public byte[] extract(byte[] inData) throws AlgorithmException {
+    public byte[] extract(Image inImage) throws AlgorithmException {
         return new byte[0];
     }
 }
