@@ -1,19 +1,23 @@
 package codes.pnk.model.domain.algorithm;
 
+import codes.pnk.model.domain.common.Image;
+import codes.pnk.model.domain.exception.AlgorithmException;
+import codes.pnk.model.domain.common.Text;
+
 public abstract class Algorithm {
 
     /**
      * Method used to embed text data into image
-     * @param inText text contents to be embedded into image
-     * @param inImage image in which the text should be embedded
+     * @param inText text file to be embedded into image
+     * @param inImage image file in which the text should be embedded
      * @return output image data with embedded text
      */
-    public abstract byte[] embed(byte[] inText, byte[] inImage);
+    public abstract byte[] embed(Text inText, Image inImage) throws AlgorithmException;
 
     /**
      * Method used to extract text data from image data
-     * @param inData image from which the text should be extracted
+     * @param inImage image file from which the text should be extracted
      * @return extracted text data
      */
-    public abstract byte[] extract(byte[] inData);
+    public abstract byte[] extract(Image inImage) throws AlgorithmException;
 }
