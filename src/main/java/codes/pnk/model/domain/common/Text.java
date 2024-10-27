@@ -8,9 +8,15 @@ public class Text {
     private static final int BUFFER_SIZE = 512;
 
     private final File sourceFile;
+    private final byte[] data;
 
-    public Text(final File file) {
+    public Text(final File file) throws TextException {
         this.sourceFile = file;
+        try (InputStream is = new FileInputStream(file)) {
+            this.data = streamToBytes(is);
+        } catch (IOException e) {
+            throw new TextException("Cannot read image file: " + file.getAbsolutePath());
+        }
     }
 
     public String getPath() {
@@ -18,7 +24,7 @@ public class Text {
     }
 
     public byte[] getData() {
-        return null;
+        return data;
     }
 
     private byte[] streamToBytes(InputStream is) throws TextException {
