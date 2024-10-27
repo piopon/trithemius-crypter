@@ -1,7 +1,7 @@
 package codes.pnk.model.domain.algorithm;
 
 import codes.pnk.model.domain.common.Image;
-import codes.pnk.model.domain.exception.ImageException;
+import codes.pnk.model.domain.exception.AlgorithmException;
 import codes.pnk.model.domain.common.Text;
 
 public abstract class Algorithm {
@@ -12,12 +12,12 @@ public abstract class Algorithm {
      * @param inImage image in which the text should be embedded
      * @return output image data with embedded text
      */
-    public abstract byte[] embed(Text inText, Image inImage) throws ImageException;
+    public abstract byte[] embed(Text inText, Image inImage) throws AlgorithmException;
 
     /**
      * Method used to extract text data from image data
      * @param inData image from which the text should be extracted
      * @return extracted text data
      */
-    public abstract byte[] extract(byte[] inData) throws ImageException;
+    public abstract byte[] extract(byte[] inData) throws AlgorithmException;
 }
