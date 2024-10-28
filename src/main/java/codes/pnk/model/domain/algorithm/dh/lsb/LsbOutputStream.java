@@ -12,6 +12,8 @@ public class LsbOutputStream extends OutputStream {
     private final Image image;
     private final Text text;
     private BufferedImage output;
+    private int pixelX = 0;
+    private int pixelY = 0;
 
     public LsbOutputStream(final Image image, final Text text) throws ImageException {
         this.image = image;
@@ -39,4 +41,13 @@ public class LsbOutputStream extends OutputStream {
         }
         return newImg;
     }
+
+    private void nextPixel() {
+        this.pixelX++;
+        if (this.pixelX == this.output.getWidth()) {
+            this.pixelX = 0;
+            this.pixelY++;
+        }
+    }
+
 }
