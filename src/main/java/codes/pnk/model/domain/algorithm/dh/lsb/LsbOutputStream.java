@@ -14,6 +14,7 @@ public class LsbOutputStream extends OutputStream {
     private BufferedImage output;
     private int pixelX = 0;
     private int pixelY = 0;
+    private int colorChannelBits = 1;
 
     public LsbOutputStream(final Image image, final Text text) throws ImageException {
         this.image = image;
@@ -40,6 +41,12 @@ public class LsbOutputStream extends OutputStream {
             }
         }
         return newImg;
+    }
+
+    private int getPixelRGB() {
+        int maskPerByte = (int) (Math.pow(2, this.colorChannelBits) - 1);
+        int mask = (maskPerByte << 16) + (maskPerByte << 8) + maskPerByte;
+        return this.output.getRGB(this.pixelX, this.pixelY) & (0xFFFFFFFF - mask);
     }
 
     private void nextPixel() {
