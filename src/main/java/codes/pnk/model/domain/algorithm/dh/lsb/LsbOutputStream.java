@@ -37,6 +37,11 @@ public class LsbOutputStream extends OutputStream {
         }
     }
 
+    @Override
+    public void flush() throws IOException {
+        writePixel();
+    }
+
     public BufferedImage getOutput() {
         return this.output;
     }
