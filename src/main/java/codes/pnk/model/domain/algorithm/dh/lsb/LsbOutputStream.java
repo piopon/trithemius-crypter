@@ -14,6 +14,7 @@ public class LsbOutputStream extends OutputStream {
     private BufferedImage output;
     private int pixelX = 0;
     private int pixelY = 0;
+    private int currRGB = 0;
     private int colorChannelBits = 1;
     private byte[] pixelRGB = new byte[3];
 
@@ -25,7 +26,15 @@ public class LsbOutputStream extends OutputStream {
 
     @Override
     public void write(int b) throws IOException {
-        return;
+        for (int bit = 0; bit < 8; bit++) {
+            this.pixelRGB[this.currRGB] = (byte) ((b >> (7 - bit)) & 1);
+            this.currRGB++;
+            if (this.currRGB == this.pixelRGB.length) {
+                this.currRGB = 0;
+                writePixel();
+                nextPixel();
+            }
+        }
     }
 
     public BufferedImage getOutput() {
