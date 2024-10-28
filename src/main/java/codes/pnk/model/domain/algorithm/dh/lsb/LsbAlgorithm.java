@@ -14,7 +14,7 @@ public class LsbAlgorithm extends Algorithm {
     public byte[] embed(Text inText, Image inImage) throws AlgorithmException {
         try {
             BufferedImage outputImage = null;
-            try (LsbOutputStream lsbOS = new LsbOutputStream(inImage, inText)) {
+            try (LsbOutputStream lsbOS = new LsbOutputStream(inImage)) {
                 lsbOS.write(inText.getData());
                 lsbOS.flush();
                 outputImage = lsbOS.getOutput();

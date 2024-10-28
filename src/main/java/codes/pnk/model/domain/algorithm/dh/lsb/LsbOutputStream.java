@@ -10,7 +10,6 @@ import java.io.OutputStream;
 
 public class LsbOutputStream extends OutputStream {
     private final Image image;
-    private final Text text;
     private BufferedImage output;
     private int pixelX = 0;
     private int pixelY = 0;
@@ -18,9 +17,8 @@ public class LsbOutputStream extends OutputStream {
     private int colorChannelBits = 1;
     private byte[] pixelRGB = new byte[3];
 
-    public LsbOutputStream(final Image image, final Text text) throws ImageException {
+    public LsbOutputStream(final Image image) throws ImageException {
         this.image = image;
-        this.text = text;
         this.output = initializeOutputImage();
     }
 
