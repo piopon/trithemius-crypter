@@ -15,6 +15,7 @@ public class LsbOutputStream extends OutputStream {
     private int pixelX = 0;
     private int pixelY = 0;
     private int colorChannelBits = 1;
+    private byte[] pixelRGB = new byte[3];
 
     public LsbOutputStream(final Image image, final Text text) throws ImageException {
         this.image = image;
@@ -41,6 +42,21 @@ public class LsbOutputStream extends OutputStream {
             }
         }
         return newImg;
+    }
+
+    private void writePixel() throws IOException {
+        if (this.pixelY == this.output.getHeight()) {
+            throw new IOException("Insufficient image size.");
+        }
+        int offset = 0;
+        for (int bit = 0; bit < this.pixelRGB.length; bit++) {
+            int bitOffset = 0;
+            for (int i = 0; i < this.colorChannelBits; i++) {
+                bitOffset = (bitOffset << 1) + this.pixelRGB[(bit * this.colorChannelBits) + i];
+            }
+            offset = (offset << 8) + bitOffset;
+        }
+        this.output.setRGB(this.pixelX, this.pixelY, getPixelRGB() + offset);
     }
 
     private int getPixelRGB() {
