@@ -40,6 +40,19 @@ public class LsbOutputStream extends OutputStream {
         writePixel();
     }
 
+    @Override
+    public void close() throws IOException {
+        if (this.currRGB != 0) {
+            for (int bit = this.currRGB; bit < this.pixelRGB.length; bit++) {
+                this.pixelRGB[bit] = 0;
+            }
+            this.currRGB = 0;
+            writePixel();
+            nextPixel();
+        }
+        super.close();
+    }
+
     public BufferedImage getOutput() {
         return this.output;
     }
