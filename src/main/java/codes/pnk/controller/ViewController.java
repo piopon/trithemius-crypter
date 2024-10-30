@@ -32,28 +32,7 @@ public class ViewController {
     }
 
     private void startSteganography(ViewActionType action) {
-        switch (action) {
-            case EMBED -> {
-                try {
-                    Algorithm algorithm = new LsbAlgorithm();
-                    final Text secret = new Text(viewModel.getTextFile().getValue());
-                    final Image cover = new Image(viewModel.getImageFile().getValue());
-                    final byte[] data = algorithm.embed(secret, cover);
-                    final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
-                    try (OutputStream os = new FileOutputStream(outputFile)) {
-                        os.write(data);
-                    } catch (IOException e) {
-                        throw new AlgorithmException(e.getMessage());
-                    }
-                } catch (TextException e) {
-                    System.out.println("Unable to resolve text file: " + e.getMessage());
-                } catch (ImageException e) {
-                    System.out.println("Unable to resolve image file: " + e.getMessage());
-                } catch (AlgorithmException e) {
-                    System.out.println("Embedding problem: " + e.getMessage());
-                }
-            }
-            default -> System.out.println("Unsupported action type: " + action);
-        }
+        AlgorithmController controller = new AlgorithmController(new LsbAlgorithm());
+        controller.start(viewModel, action);
     }
 }
