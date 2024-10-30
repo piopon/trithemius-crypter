@@ -1,5 +1,12 @@
 package codes.pnk.controller;
 
+import codes.pnk.model.domain.algorithm.Algorithm;
+import codes.pnk.model.domain.algorithm.dh.lsb.LsbAlgorithm;
+import codes.pnk.model.domain.common.Image;
+import codes.pnk.model.domain.common.Text;
+import codes.pnk.model.domain.exception.AlgorithmException;
+import codes.pnk.model.domain.exception.ImageException;
+import codes.pnk.model.domain.exception.TextException;
 import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
@@ -22,10 +29,18 @@ public class ViewController {
     private void startSteganography(ViewActionType action) {
         switch (action) {
             case EMBED:
-                System.out.println("Selected text file:   " + viewModel.getTextFile().getValue());
-                System.out.println("Selected image file:  " + viewModel.getImageFile().getValue());
-                System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
-                System.out.println("Start EMBED action");
+                try {
+                    Algorithm algorithm = new LsbAlgorithm();
+                    byte[] data = algorithm.embed(new Text(viewModel.getTextFile().getValue()),
+                                                  new Image(viewModel.getImageFile().getValue()));
+                    System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
+                } catch (TextException e) {
+                    System.out.println("Unable to resolve text file: " + e.getMessage());
+                } catch (ImageException e) {
+                    System.out.println("Unable to resolve image file: " + e.getMessage());
+                } catch (AlgorithmException e) {
+                    System.out.println("Embedding problem: " + e.getMessage());
+                }
                 break;
             case EXTRACT:
             default:
