@@ -1,6 +1,6 @@
 package codes.pnk.view;
 
-import codes.pnk.model.presentation.ActionType;
+import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -49,7 +49,7 @@ public class FxmlController implements Initializable {
         initializeFileField(fieldTextFile, buttonTextFile, viewModel.getTextFile());
         initializeFileField(fieldImageFile, buttonImageFile, viewModel.getImageFile());
         initializePathField(fieldOutPath, buttonOutPath, viewModel.getOutputPath());
-        buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ActionType.EMBED));
+        buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ViewActionType.EMBED));
     }
 
     private void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {

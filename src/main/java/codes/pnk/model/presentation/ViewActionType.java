@@ -1,6 +1,6 @@
 package codes.pnk.model.presentation;
 
-public enum ActionType {
+public enum ViewActionType {
     EMBED,
     EXTRACT
 }

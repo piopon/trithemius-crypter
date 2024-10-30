@@ -1,5 +1,6 @@
 package codes.pnk.controller;
 
+import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import codes.pnk.view.FxmlBuilder;
@@ -18,11 +19,11 @@ public class ViewController {
         return viewBuilder.build();
     }
 
-    private void startSteganography(int mode) {
+    private void startSteganography(ViewActionType mode) {
         System.out.println("Selected text file:   " + viewModel.getTextFile().getValue());
         System.out.println("Selected image file:  " + viewModel.getImageFile().getValue());
         System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
-        if(mode == 0) {
+        if(ViewActionType.EMBED.equals(mode)) {
             System.out.println("Start EMBED action");
         } else {
             System.out.println("startSteganography -> " + mode);
