@@ -14,6 +14,8 @@ import codes.pnk.view.FxmlBuilder;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class ViewController {
     private final ViewModel viewModel = new ViewModel();
     private final FxmlBuilder viewBuilder;
@@ -31,9 +33,11 @@ public class ViewController {
             case EMBED:
                 try {
                     Algorithm algorithm = new LsbAlgorithm();
-                    byte[] data = algorithm.embed(new Text(viewModel.getTextFile().getValue()),
-                                                  new Image(viewModel.getImageFile().getValue()));
-                    System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
+                    final Text secret = new Text(viewModel.getTextFile().getValue());
+                    final Image cover = new Image(viewModel.getImageFile().getValue());
+                    final byte[] data = algorithm.embed(secret, cover);
+                    final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
+                    System.out.println("Output file: " + outputFile.getPath());
                 } catch (TextException e) {
                     System.out.println("Unable to resolve text file: " + e.getMessage());
                 } catch (ImageException e) {
