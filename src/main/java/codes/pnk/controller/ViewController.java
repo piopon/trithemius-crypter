@@ -15,6 +15,9 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class ViewController {
     private final ViewModel viewModel = new ViewModel();
@@ -37,7 +40,11 @@ public class ViewController {
                     final Image cover = new Image(viewModel.getImageFile().getValue());
                     final byte[] data = algorithm.embed(secret, cover);
                     final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
-                    System.out.println("Output file: " + outputFile.getPath());
+                    try (OutputStream os = new FileOutputStream(outputFile)) {
+                        os.write(data);
+                    } catch (IOException e) {
+                        throw new AlgorithmException(e.getMessage());
+                    }
                 } catch (TextException e) {
                     System.out.println("Unable to resolve text file: " + e.getMessage());
                 } catch (ImageException e) {
