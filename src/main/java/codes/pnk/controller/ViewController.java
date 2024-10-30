@@ -1,23 +1,12 @@
 package codes.pnk.controller;
 
-import codes.pnk.model.domain.algorithm.Algorithm;
 import codes.pnk.model.domain.algorithm.dh.lsb.LsbAlgorithm;
-import codes.pnk.model.domain.common.Image;
-import codes.pnk.model.domain.common.Text;
-import codes.pnk.model.domain.exception.AlgorithmException;
-import codes.pnk.model.domain.exception.ImageException;
-import codes.pnk.model.domain.exception.TextException;
 import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import codes.pnk.view.FxmlBuilder;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 public class ViewController {
     private final ViewModel viewModel = new ViewModel();
