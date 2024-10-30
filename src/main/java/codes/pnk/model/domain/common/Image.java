@@ -31,6 +31,10 @@ public class Image {
         this.data = bufferedImageToData(bufferedImage);
     }
 
+    public String getName() {
+        return sourceFile.getName();
+    }
+
     public String getPath() {
         return sourceFile.getAbsolutePath();
     }
