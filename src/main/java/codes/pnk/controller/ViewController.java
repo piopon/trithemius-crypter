@@ -19,8 +19,8 @@ public class ViewController {
         return viewBuilder.build();
     }
 
-    private void startSteganography(ViewActionType mode) {
-        switch (mode) {
+    private void startSteganography(ViewActionType action) {
+        switch (action) {
             case EMBED:
                 System.out.println("Selected text file:   " + viewModel.getTextFile().getValue());
                 System.out.println("Selected image file:  " + viewModel.getImageFile().getValue());
@@ -29,7 +29,7 @@ public class ViewController {
                 break;
             case EXTRACT:
             default:
-                System.out.println("Unsupported action type: " + mode);
+                System.out.println("Unsupported action type: " + action);
                 break;
         }
     }
