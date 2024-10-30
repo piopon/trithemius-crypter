@@ -29,11 +29,7 @@ public class AlgorithmController {
                     final Image cover = new Image(viewModel.getImageFile().getValue());
                     final byte[] data = algorithm.embed(secret, cover);
                     final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
-                    try (OutputStream os = new FileOutputStream(outputFile)) {
-                        os.write(data);
-                    } catch (IOException e) {
-                        throw new AlgorithmException(e.getMessage());
-                    }
+                    saveBytesToFile(data, outputFile);
                 } catch (TextException e) {
                     System.out.println("Unable to resolve text file: " + e.getMessage());
                 } catch (ImageException e) {
@@ -43,6 +39,14 @@ public class AlgorithmController {
                 }
             }
             default -> System.out.println("Unsupported action type: " + action);
+        }
+    }
+
+    private void saveBytesToFile(byte[] data, File file) throws AlgorithmException {
+        try (OutputStream os = new FileOutputStream(file)) {
+            os.write(data);
+        } catch (IOException e) {
+            throw new AlgorithmException(e.getMessage());
         }
     }
 }
