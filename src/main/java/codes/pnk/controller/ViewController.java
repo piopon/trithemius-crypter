@@ -33,7 +33,7 @@ public class ViewController {
 
     private void startSteganography(ViewActionType action) {
         switch (action) {
-            case EMBED:
+            case EMBED -> {
                 try {
                     Algorithm algorithm = new LsbAlgorithm();
                     final Text secret = new Text(viewModel.getTextFile().getValue());
@@ -52,11 +52,8 @@ public class ViewController {
                 } catch (AlgorithmException e) {
                     System.out.println("Embedding problem: " + e.getMessage());
                 }
-                break;
-            case EXTRACT:
-            default:
-                System.out.println("Unsupported action type: " + action);
-                break;
+            }
+            default -> System.out.println("Unsupported action type: " + action);
         }
     }
 }
