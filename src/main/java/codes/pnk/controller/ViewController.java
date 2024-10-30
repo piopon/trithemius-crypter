@@ -20,13 +20,17 @@ public class ViewController {
     }
 
     private void startSteganography(ViewActionType mode) {
-        System.out.println("Selected text file:   " + viewModel.getTextFile().getValue());
-        System.out.println("Selected image file:  " + viewModel.getImageFile().getValue());
-        System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
-        if(ViewActionType.EMBED.equals(mode)) {
-            System.out.println("Start EMBED action");
-        } else {
-            System.out.println("startSteganography -> " + mode);
+        switch (mode) {
+            case EMBED:
+                System.out.println("Selected text file:   " + viewModel.getTextFile().getValue());
+                System.out.println("Selected image file:  " + viewModel.getImageFile().getValue());
+                System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
+                System.out.println("Start EMBED action");
+                break;
+            case EXTRACT:
+            default:
+                System.out.println("Unsupported action type: " + mode);
+                break;
         }
     }
 }
