@@ -25,20 +25,26 @@ public class AlgorithmController {
         switch (action) {
             case EMBED -> {
                 try {
-                    final Text secret = new Text(viewModel.getTextFile().getValue());
-                    final Image cover = new Image(viewModel.getImageFile().getValue());
-                    final byte[] data = algorithm.embed(secret, cover);
-                    final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
-                    saveBytesToFile(data, outputFile);
-                } catch (TextException e) {
-                    System.out.println("Unable to resolve text file: " + e.getMessage());
-                } catch (ImageException e) {
-                    System.out.println("Unable to resolve image file: " + e.getMessage());
+                    embed(viewModel);
                 } catch (AlgorithmException e) {
                     System.out.println("Embedding problem: " + e.getMessage());
                 }
             }
             default -> System.out.println("Unsupported action type: " + action);
+        }
+    }
+
+    private void embed(ViewModel viewModel) throws AlgorithmException {
+        try {
+            final Text secret = new Text(viewModel.getTextFile().getValue());
+            final Image cover = new Image(viewModel.getImageFile().getValue());
+            final byte[] data = algorithm.embed(secret, cover);
+            final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
+            saveBytesToFile(data, outputFile);
+        } catch (TextException e) {
+            throw new AlgorithmException("Unable to resolve secret text file: " + e.getMessage());
+        } catch (ImageException e) {
+            throw new AlgorithmException("Unable to resolve image cover file: " + e.getMessage());
         }
     }
 
