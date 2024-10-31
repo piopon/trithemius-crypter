@@ -21,16 +21,10 @@ public class AlgorithmController {
         this.algorithm = algorithm;
     }
 
-    public void start(ViewModel viewModel, ViewActionType action) {
+    public void start(ViewModel viewModel, ViewActionType action) throws AlgorithmException {
         switch (action) {
-            case EMBED -> {
-                try {
-                    embed(viewModel);
-                } catch (AlgorithmException e) {
-                    System.out.println("Embedding problem: " + e.getMessage());
-                }
-            }
-            default -> System.out.println("Unsupported action type: " + action);
+            case EMBED -> embed(viewModel);
+            default -> throw new AlgorithmException("Unsupported action type: " + action);
         }
     }
 

@@ -1,6 +1,7 @@
 package codes.pnk.controller;
 
 import codes.pnk.model.domain.algorithm.dh.lsb.LsbAlgorithm;
+import codes.pnk.model.domain.exception.AlgorithmException;
 import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
@@ -21,7 +22,11 @@ public class ViewController {
     }
 
     private void startSteganography(ViewActionType action) {
-        AlgorithmController controller = new AlgorithmController(new LsbAlgorithm());
-        controller.start(viewModel, action);
+        try {
+            AlgorithmController controller = new AlgorithmController(new LsbAlgorithm());
+            controller.start(viewModel, action);
+        } catch (AlgorithmException e) {
+            System.out.println("Error while executing " + action + " action: " + e.getMessage());
+        }
     }
 }
