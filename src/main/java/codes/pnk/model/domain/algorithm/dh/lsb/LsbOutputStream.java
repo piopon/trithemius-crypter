@@ -2,7 +2,6 @@ package codes.pnk.model.domain.algorithm.dh.lsb;
 
 import codes.pnk.model.domain.common.Image;
 import codes.pnk.model.domain.exception.ImageException;
-import codes.pnk.model.domain.common.Text;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
