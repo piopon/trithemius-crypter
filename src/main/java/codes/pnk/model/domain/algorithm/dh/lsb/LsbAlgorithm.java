@@ -13,7 +13,7 @@ public class LsbAlgorithm extends Algorithm {
     @Override
     public byte[] embed(final Text secretText, final Image coverImage) throws AlgorithmException {
         try {
-            BufferedImage outputImage = null;
+            BufferedImage outputImage;
             try (LsbOutputStream lsbOS = new LsbOutputStream(coverImage)) {
                 lsbOS.write(secretText.getData());
                 lsbOS.flush();
