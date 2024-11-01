@@ -8,16 +8,16 @@ public abstract class Algorithm {
 
     /**
      * Method used to embed text data into image
-     * @param inText text file to be embedded into image
-     * @param inImage image file in which the text should be embedded
+     * @param secretText text file to be embedded into image
+     * @param coverImage image file in which the text should be embedded
      * @return output image data with embedded text
      */
-    public abstract byte[] embed(Text inText, Image inImage) throws AlgorithmException;
+    public abstract byte[] embed(Text secretText, Image coverImage) throws AlgorithmException;
 
     /**
      * Method used to extract text data from image data
-     * @param inImage image file from which the text should be extracted
+     * @param image image file from which the text should be extracted
      * @return extracted text data
      */
-    public abstract byte[] extract(Image inImage) throws AlgorithmException;
+    public abstract byte[] extract(Image image) throws AlgorithmException;
 }

@@ -11,22 +11,22 @@ import java.io.IOException;
 
 public class LsbAlgorithm extends Algorithm {
     @Override
-    public byte[] embed(Text inText, Image inImage) throws AlgorithmException {
+    public byte[] embed(Text secretText, Image coverImage) throws AlgorithmException {
         try {
             BufferedImage outputImage = null;
-            try (LsbOutputStream lsbOS = new LsbOutputStream(inImage)) {
-                lsbOS.write(inText.getData());
+            try (LsbOutputStream lsbOS = new LsbOutputStream(coverImage)) {
+                lsbOS.write(secretText.getData());
                 lsbOS.flush();
                 outputImage = lsbOS.getOutput();
             }
-            return new Image(inImage.getPath(), outputImage).getRawImageData();
+            return new Image(secretText.getPath(), outputImage).getRawImageData();
         } catch (IOException | ImageException e) {
             throw new AlgorithmException(e);
         }
     }
 
     @Override
-    public byte[] extract(Image inImage) throws AlgorithmException {
+    public byte[] extract(Image image) throws AlgorithmException {
         return new byte[0];
     }
 }
