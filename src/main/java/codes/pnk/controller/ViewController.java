@@ -1,5 +1,8 @@
 package codes.pnk.controller;
 
+import codes.pnk.model.domain.algorithm.dh.lsb.LsbAlgorithm;
+import codes.pnk.model.domain.exception.AlgorithmException;
+import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import codes.pnk.view.FxmlBuilder;
@@ -18,14 +21,12 @@ public class ViewController {
         return viewBuilder.build();
     }
 
-    private void startSteganography(int mode) {
-        System.out.println("Selected text file:   " + viewModel.getTextFile().getValue());
-        System.out.println("Selected image file:  " + viewModel.getImageFile().getValue());
-        System.out.println("Selected output path: " + viewModel.getOutputPath().getValue());
-        if(mode == 0) {
-            System.out.println("Start EMBED action");
-        } else {
-            System.out.println("startSteganography -> " + mode);
+    private void startSteganography(final ViewActionType action) {
+        try {
+            AlgorithmController controller = new AlgorithmController(new LsbAlgorithm());
+            controller.start(viewModel, action);
+        } catch (AlgorithmException e) {
+            System.out.println("Error while executing " + action + " action: " + e.getMessage());
         }
     }
 }

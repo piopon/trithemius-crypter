@@ -4,5 +4,5 @@ import javafx.stage.Stage;
 
 import java.util.function.Consumer;
 
-public record ViewConfig(Stage stage, Consumer<Integer> action) {
+public record ViewConfig(Stage stage, Consumer<ViewActionType> action) {
 }
