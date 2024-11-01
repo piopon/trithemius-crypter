@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class LsbOutputStream extends OutputStream {
-    private final Image image;
+    private final BufferedImage image;
     private BufferedImage output;
     private int pixelX = 0;
     private int pixelY = 0;
@@ -18,7 +18,7 @@ public class LsbOutputStream extends OutputStream {
     private byte[] pixelRGB = new byte[3];
 
     public LsbOutputStream(final Image image) throws ImageException {
-        this.image = image;
+        this.image = image.getBufferedImageData();
         this.output = initializeOutputImage();
     }
 
@@ -58,12 +58,12 @@ public class LsbOutputStream extends OutputStream {
     }
 
     private BufferedImage initializeOutputImage() throws ImageException {
-        int imageWidth = this.image.getBufferedImageData().getWidth();
-        int imageHeight = this.image.getBufferedImageData().getHeight();
+        int imageWidth = this.image.getWidth();
+        int imageHeight = this.image.getHeight();
         BufferedImage newImg = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         for (int x = 0; x < imageWidth; x++) {
             for (int y = 0; y < imageHeight; y++) {
-                newImg.setRGB(x, y, this.image.getBufferedImageData().getRGB(x, y));
+                newImg.setRGB(x, y, this.image.getRGB(x, y));
             }
         }
         return newImg;
