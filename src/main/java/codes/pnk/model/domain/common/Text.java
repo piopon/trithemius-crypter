@@ -27,7 +27,7 @@ public class Text {
         return data;
     }
 
-    private byte[] streamToBytes(InputStream is) throws TextException {
+    private byte[] streamToBytes(final InputStream is) throws TextException {
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
             int bytesRead;
             byte[] data = new byte[BUFFER_SIZE];

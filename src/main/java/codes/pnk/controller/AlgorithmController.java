@@ -21,14 +21,14 @@ public class AlgorithmController {
         this.algorithm = algorithm;
     }
 
-    public void start(ViewModel viewModel, ViewActionType action) throws AlgorithmException {
+    public void start(final ViewModel viewModel, final ViewActionType action) throws AlgorithmException {
         switch (action) {
             case EMBED -> embed(viewModel);
             default -> throw new AlgorithmException("Unsupported action type: " + action);
         }
     }
 
-    private void embed(ViewModel viewModel) throws AlgorithmException {
+    private void embed(final ViewModel viewModel) throws AlgorithmException {
         try {
             final Text secret = new Text(viewModel.getTextFile().getValue());
             final Image cover = new Image(viewModel.getImageFile().getValue());

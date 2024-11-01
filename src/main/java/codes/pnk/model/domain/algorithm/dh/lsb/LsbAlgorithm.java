@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class LsbAlgorithm extends Algorithm {
     @Override
-    public byte[] embed(Text secretText, Image coverImage) throws AlgorithmException {
+    public byte[] embed(final Text secretText, final Image coverImage) throws AlgorithmException {
         try {
             BufferedImage outputImage = null;
             try (LsbOutputStream lsbOS = new LsbOutputStream(coverImage)) {
@@ -26,7 +26,7 @@ public class LsbAlgorithm extends Algorithm {
     }
 
     @Override
-    public byte[] extract(Image image) throws AlgorithmException {
+    public byte[] extract(final Image image) throws AlgorithmException {
         return new byte[0];
     }
 }

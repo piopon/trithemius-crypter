@@ -21,7 +21,7 @@ public class ViewController {
         return viewBuilder.build();
     }
 
-    private void startSteganography(ViewActionType action) {
+    private void startSteganography(final ViewActionType action) {
         try {
             AlgorithmController controller = new AlgorithmController(new LsbAlgorithm());
             controller.start(viewModel, action);

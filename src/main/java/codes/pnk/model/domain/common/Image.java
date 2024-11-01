@@ -47,7 +47,7 @@ public class Image {
         return streamToBufferedImage(new ByteArrayInputStream(this.data));
     }
 
-    private byte[] streamToBytes(InputStream is) throws ImageException {
+    private byte[] streamToBytes(final InputStream is) throws ImageException {
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
             int bytesRead;
             byte[] data = new byte[BUFFER_SIZE];
@@ -60,7 +60,7 @@ public class Image {
         }
     }
 
-    private BufferedImage streamToBufferedImage(InputStream is) throws ImageException {
+    private BufferedImage streamToBufferedImage(final InputStream is) throws ImageException {
         try {
             ImageInputStream imageStream = ImageIO.createImageInputStream(is);
             Iterator<ImageReader> readers = ImageIO.getImageReaders(imageStream);
