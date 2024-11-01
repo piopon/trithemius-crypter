@@ -9,12 +9,12 @@ import java.io.OutputStream;
 
 public class LsbOutputStream extends OutputStream {
     private final BufferedImage image;
-    private BufferedImage output;
+    private final BufferedImage output;
+    private final byte[] pixelRGB = new byte[3];
+    private final int colorChannelBits = 1;
     private int pixelX = 0;
     private int pixelY = 0;
     private int currRGB = 0;
-    private int colorChannelBits = 1;
-    private byte[] pixelRGB = new byte[3];
 
     public LsbOutputStream(final Image image) throws ImageException {
         this.image = image.getBufferedImageData();
@@ -96,5 +96,4 @@ public class LsbOutputStream extends OutputStream {
             this.pixelY++;
         }
     }
-
 }
