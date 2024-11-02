@@ -25,17 +25,17 @@ public class FxmlController implements Initializable {
     private final ViewModel viewModel;
 
     @FXML
-    private TextField fieldTextFile;
+    private TextField fieldTextEmbed;
     @FXML
-    private TextField fieldImageFile;
+    private TextField fieldImageEmbed;
     @FXML
-    private TextField fieldOutPath;
+    private TextField fieldOutEmbed;
     @FXML
-    private Button buttonTextFile;
+    private Button buttonTextEmbed;
     @FXML
-    private Button buttonImageFile;
+    private Button buttonImageEmbed;
     @FXML
-    private Button buttonOutPath;
+    private Button buttonOutEmbed;
     @FXML
     private Button buttonActionEmbed;
 
@@ -46,9 +46,9 @@ public class FxmlController implements Initializable {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        initializeFileField(fieldTextFile, buttonTextFile, viewModel.getTextFile());
-        initializeFileField(fieldImageFile, buttonImageFile, viewModel.getImageFile());
-        initializePathField(fieldOutPath, buttonOutPath, viewModel.getOutputPath());
+        initializeFileField(fieldTextEmbed, buttonTextEmbed, viewModel.getTextFile());
+        initializeFileField(fieldImageEmbed, buttonImageEmbed, viewModel.getImageFile());
+        initializePathField(fieldOutEmbed, buttonOutEmbed, viewModel.getOutputPath());
         buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ViewActionType.EMBED));
     }
 
