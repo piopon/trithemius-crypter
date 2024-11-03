@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
@@ -42,6 +43,8 @@ public class FxmlController implements Initializable {
 
     @FXML
     private TabPane tabPane;
+    @FXML
+    private BorderPane mainPane;
 
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
