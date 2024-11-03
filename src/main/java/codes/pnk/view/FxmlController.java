@@ -7,6 +7,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -39,6 +40,9 @@ public class FxmlController implements Initializable {
     @FXML
     private Button buttonActionEmbed;
 
+    @FXML
+    private TabPane tabPane;
+
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
         this.viewModel = viewModel;
@@ -50,6 +54,10 @@ public class FxmlController implements Initializable {
         initializeFileField(fieldImageEmbed, buttonImageEmbed, viewModel.getImageFile());
         initializePathField(fieldOutEmbed, buttonOutEmbed, viewModel.getOutputPath());
         buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ViewActionType.EMBED));
+
+        System.out.println("selected: " + tabPane.getSelectionModel().getSelectedItem().getText());
+        tabPane.getSelectionModel().selectedItemProperty()
+               .addListener((observableValue, tab, t1) -> System.out.println("selected: " + t1.getText()));
     }
 
     private void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
