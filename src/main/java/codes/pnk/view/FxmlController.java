@@ -62,9 +62,9 @@ public class FxmlController implements Initializable {
         initializePathField(fieldOutEmbed, buttonOutEmbed, viewModel.getOutputPath());
         buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ViewActionType.EMBED));
 
-        System.out.println("selected: " + tabPane.getSelectionModel().getSelectedItem().getText());
+        refreshContent(tabPane.getSelectionModel().getSelectedItem().getText());
         tabPane.getSelectionModel().selectedItemProperty()
-               .addListener((observableValue, tab, t1) -> System.out.println("selected: " + t1.getText()));
+               .addListener((observableValue, tab, t1) -> refreshContent(t1.getText()));
     }
 
     private void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
@@ -91,6 +91,10 @@ public class FxmlController implements Initializable {
 
     private <T> void updateTextField(final TextField field, final ObjectProperty<T> modelValue) {
         field.setText(modelValue.isNotNull().get() ? modelValue.getValue().toString() : EMPTY_TEXT_FIELD);
+    }
+
+    private void refreshContent(final String tabName) {
+        mainPane.setCenter(getContent(tabName));
     }
 
     private Pane getContent(final String tabName) {
