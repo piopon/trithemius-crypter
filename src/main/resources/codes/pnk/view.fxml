@@ -14,30 +14,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml">
     <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
         <Tab text="TEST"/>
-        <Tab text="EMBED">
-            <GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="5">
-                <padding>
-                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
-                </padding>
-                <!--  IMAGE FILE  -->
-                <Text text="Image file" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
-                <TextField fx:id="fieldImageEmbed" GridPane.rowIndex="1" GridPane.columnIndex="0" editable="false"/>
-                <Button text="..." fx:id="buttonImageEmbed" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <!--  TEXT FILE  -->
-                <Text text="Text file" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
-                <TextField fx:id="fieldTextEmbed" GridPane.rowIndex="3" GridPane.columnIndex="0" editable="false"/>
-                <Button text="..." fx:id="buttonTextEmbed" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-                <!--  OUTPUT DIRECTORY  -->
-                <Text text="Output directory" GridPane.rowIndex="4" GridPane.columnIndex="0"
-                      GridPane.columnSpan="2"/>
-                <TextField fx:id="fieldOutEmbed" GridPane.rowIndex="5" GridPane.columnIndex="0" editable="false"/>
-                <Button text="..." fx:id="buttonOutEmbed" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-                <!--  EMBED ACTION BUTTON  -->
-                <HBox spacing="10" alignment="bottom_right" GridPane.rowIndex="6" GridPane.columnIndex="1">
-                    <Button text="EMBED" fx:id="buttonActionEmbed"/>
-                </HBox>
-            </GridPane>
-        </Tab>
+        <Tab text="EMBED"/>
         <Tab text="EXTRACT">
             <GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="5">
                 <padding>
