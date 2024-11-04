@@ -94,11 +94,15 @@ public class FxmlController implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml"));
             TabController controller = controllers.get(tabName.toLowerCase());
-            fxmlLoader.setController(controller);
-            controller.initialize(url, resourceBundle);
-            return fxmlLoader.load();
+            if (controller != null) {
+                fxmlLoader.setController(controller);
+                controller.initialize(url, resourceBundle);
+                return fxmlLoader.load();
+            }
+            return new BorderPane();
         } catch (IOException e) {
-            return null;
+            e.printStackTrace();
+            return new BorderPane();
         }
     }
 }
