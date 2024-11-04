@@ -60,10 +60,9 @@ public class FxmlController implements Initializable {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        controllers.forEach((key, value) -> value.initialize(url, resourceBundle));
-        refreshContent(tabPane.getSelectionModel().getSelectedItem().getText());
+        refreshContent(tabPane.getSelectionModel().getSelectedItem().getText(), url, resourceBundle);
         tabPane.getSelectionModel().selectedItemProperty()
-               .addListener((observableValue, tab, t1) -> refreshContent(t1.getText()));
+               .addListener((observableValue, tab, t1) -> refreshContent(t1.getText(), url, resourceBundle));
     }
 
     private void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
@@ -92,14 +91,16 @@ public class FxmlController implements Initializable {
         field.setText(modelValue.isNotNull().get() ? modelValue.getValue().toString() : EMPTY_TEXT_FIELD);
     }
 
-    private void refreshContent(final String tabName) {
-        mainPane.setCenter(getContent(tabName));
+    private void refreshContent(final String tabName, final URL url, final ResourceBundle resourceBundle) {
+        mainPane.setCenter(getContent(tabName, url, resourceBundle));
     }
 
-    private Pane getContent(final String tabName) {
+    private Pane getContent(final String tabName, final URL url, final ResourceBundle resourceBundle) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml"));
-            fxmlLoader.setController(controllers.get(tabName.toLowerCase()));
+            TabController controller = controllers.get(tabName.toLowerCase());
+            fxmlLoader.setController(controller);
+            controller.initialize(url, resourceBundle);
             return fxmlLoader.load();
         } catch (IOException e) {
             return null;
