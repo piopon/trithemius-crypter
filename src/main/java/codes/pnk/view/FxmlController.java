@@ -1,7 +1,6 @@
 package codes.pnk.view;
 
 import codes.pnk.Main;
-import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import javafx.beans.property.ObjectProperty;
