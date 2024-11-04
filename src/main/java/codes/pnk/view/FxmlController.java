@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
@@ -27,6 +28,7 @@ public class FxmlController implements Initializable {
 
     private final FileChooser fileChooser = new FileChooser();
     private final DirectoryChooser pathChooser = new DirectoryChooser();
+    private final Map<String, TabController> controllers;
     private final ViewConfig viewConfig;
     private final ViewModel viewModel;
 
@@ -53,15 +55,12 @@ public class FxmlController implements Initializable {
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
         this.viewModel = viewModel;
+        this.controllers = Map.of("embed", new EmbedTabController(viewModel, viewConfig));
     }
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        initializeFileField(fieldTextEmbed, buttonTextEmbed, viewModel.getTextFile());
-        initializeFileField(fieldImageEmbed, buttonImageEmbed, viewModel.getImageFile());
-        initializePathField(fieldOutEmbed, buttonOutEmbed, viewModel.getOutputPath());
-        buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ViewActionType.EMBED));
-
+        controllers.forEach((key, value) -> value.initialize(url, resourceBundle));
         refreshContent(tabPane.getSelectionModel().getSelectedItem().getText());
         tabPane.getSelectionModel().selectedItemProperty()
                .addListener((observableValue, tab, t1) -> refreshContent(t1.getText()));
@@ -99,7 +98,9 @@ public class FxmlController implements Initializable {
 
     private Pane getContent(final String tabName) {
         try {
-            return new FXMLLoader(Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml")).load();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml"));
+            fxmlLoader.setController(controllers.get(tabName.toLowerCase()));
+            return fxmlLoader.load();
         } catch (IOException e) {
             return null;
         }
