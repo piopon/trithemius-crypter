@@ -96,7 +96,6 @@ public class FxmlController implements Initializable {
             TabController controller = controllers.get(tabName.toLowerCase());
             if (controller != null) {
                 fxmlLoader.setController(controller);
-                controller.initialize(url, resourceBundle);
                 return fxmlLoader.load();
             }
             return new BorderPane();
