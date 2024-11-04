@@ -32,9 +32,9 @@ public class EmbedTabController extends TabController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeFileField(fieldTextEmbed, buttonTextEmbed, viewModel.getTextFile());
-        initializeFileField(fieldImageEmbed, buttonImageEmbed, viewModel.getImageFile());
-        initializePathField(fieldOutEmbed, buttonOutEmbed, viewModel.getOutputPath());
-        buttonActionEmbed.setOnAction(actionEvent -> viewConfig.action().accept(ViewActionType.EMBED));
+        initializeFileField(fieldTextEmbed, buttonTextEmbed, getViewModel().getTextFile());
+        initializeFileField(fieldImageEmbed, buttonImageEmbed, getViewModel().getImageFile());
+        initializePathField(fieldOutEmbed, buttonOutEmbed, getViewModel().getOutputPath());
+        buttonActionEmbed.setOnAction(actionEvent -> getViewConfig().action().accept(ViewActionType.EMBED));
     }
 }

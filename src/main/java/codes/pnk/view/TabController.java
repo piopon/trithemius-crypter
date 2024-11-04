@@ -25,6 +25,14 @@ public abstract class TabController implements Initializable {
         this.viewModel = viewModel;
     }
 
+    protected ViewConfig getViewConfig() {
+        return this.viewConfig;
+    }
+
+    protected ViewModel getViewModel() {
+        return this.viewModel;
+    }
+
     protected void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
         updateTextField(field, property);
         button.setOnAction(actionEvent -> {
