@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmbedTabController extends TabController {
+public class TabEmbedController extends TabController {
     @FXML
     private TextField fieldTextEmbed;
     @FXML
@@ -26,7 +26,7 @@ public class EmbedTabController extends TabController {
     @FXML
     private Button buttonActionEmbed;
 
-    public EmbedTabController(final ViewModel viewModel, final ViewConfig viewConfig) {
+    public TabEmbedController(final ViewModel viewModel, final ViewConfig viewConfig) {
         super(viewModel, viewConfig);
     }
 
