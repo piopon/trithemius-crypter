@@ -32,16 +32,6 @@ public class FxmlController implements Initializable {
     private final ViewModel viewModel;
 
     @FXML
-    private TextField fieldImageExtract;
-    @FXML
-    private TextField fieldOutExtract;
-    @FXML
-    private Button buttonImageExtract;
-    @FXML
-    private Button buttonOutExtract;
-    @FXML
-    private Button buttonActionExtract;
-    @FXML
     private TabPane tabPane;
     @FXML
     private BorderPane mainPane;
