@@ -39,7 +39,8 @@ public class FxmlController implements Initializable {
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
         this.viewConfig = viewConfig;
         this.viewModel = viewModel;
-        this.controllers = Map.of("embed", new TabEmbedController(viewModel, viewConfig));
+        this.controllers = Map.of("embed", new TabEmbedController(viewModel, viewConfig),
+                                  "extract", new TabExtractController(viewModel, viewConfig));
     }
 
     @Override
