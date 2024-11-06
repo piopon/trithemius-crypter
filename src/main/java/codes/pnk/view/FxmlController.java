@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
-    private final Map<String, TabController> controllers;
+    private final Map<String, TabController> tabControllers;
 
     @FXML
     private TabPane tabPane;
@@ -24,8 +24,8 @@ public class FxmlController implements Initializable {
     private BorderPane mainPane;
 
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
-        this.controllers = Map.of("embed", new TabEmbedController(viewModel, viewConfig),
-                                  "extract", new TabExtractController(viewModel, viewConfig));
+        this.tabControllers = Map.of("embed", new TabEmbedController(viewModel, viewConfig),
+                                     "extract", new TabExtractController(viewModel, viewConfig));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class FxmlController implements Initializable {
     private Pane getContent(final String tabName) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml"));
-            TabController controller = controllers.get(tabName.toLowerCase());
+            TabController controller = tabControllers.get(tabName.toLowerCase());
             if (controller != null) {
                 fxmlLoader.setController(controller);
                 return fxmlLoader.load();
