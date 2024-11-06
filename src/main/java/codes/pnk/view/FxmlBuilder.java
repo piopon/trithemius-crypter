@@ -22,7 +22,7 @@ public class FxmlBuilder  implements Builder<Region> {
     @Override
     public Region build() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-view.fxml"));
             FxmlController controller = new FxmlController(viewModel, viewConfig);
             fxmlLoader.setController(controller);
             return fxmlLoader.load();
