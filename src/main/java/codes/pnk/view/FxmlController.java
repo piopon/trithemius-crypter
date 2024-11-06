@@ -23,13 +23,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class FxmlController implements Initializable {
-    private final static String EMPTY_TEXT_FIELD = "-- none selected --";
-
-    private final FileChooser fileChooser = new FileChooser();
-    private final DirectoryChooser pathChooser = new DirectoryChooser();
     private final Map<String, TabController> controllers;
-    private final ViewConfig viewConfig;
-    private final ViewModel viewModel;
 
     @FXML
     private TabPane tabPane;
@@ -37,8 +31,6 @@ public class FxmlController implements Initializable {
     private BorderPane mainPane;
 
     public FxmlController(final ViewModel viewModel, final ViewConfig viewConfig) {
-        this.viewConfig = viewConfig;
-        this.viewModel = viewModel;
         this.controllers = Map.of("embed", new TabEmbedController(viewModel, viewConfig),
                                   "extract", new TabExtractController(viewModel, viewConfig));
     }
@@ -48,32 +40,6 @@ public class FxmlController implements Initializable {
         refreshContent(tabPane.getSelectionModel().getSelectedItem().getText());
         tabPane.getSelectionModel().selectedItemProperty()
                .addListener((observableValue, tab, t1) -> refreshContent(t1.getText()));
-    }
-
-    private void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
-        updateTextField(field, property);
-        button.setOnAction(actionEvent -> {
-            File file = fileChooser.showOpenDialog(viewConfig.stage());
-            if (file != null) {
-                property.setValue(file);
-                updateTextField(field, property);
-            }
-        });
-    }
-
-    private void initializePathField(TextField field, Button button, ObjectProperty<Path> property) {
-        updateTextField(field, property);
-        button.setOnAction(actionEvent -> {
-            File file = pathChooser.showDialog(viewConfig.stage());
-            if (file != null) {
-                property.setValue(file.toPath());
-                updateTextField(field, property);
-            }
-        });
-    }
-
-    private <T> void updateTextField(final TextField field, final ObjectProperty<T> modelValue) {
-        field.setText(modelValue.isNotNull().get() ? modelValue.getValue().toString() : EMPTY_TEXT_FIELD);
     }
 
     private void refreshContent(final String tabName) {
