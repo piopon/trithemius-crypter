@@ -24,6 +24,7 @@ public class AlgorithmController {
     public void start(final ViewModel viewModel, final ViewActionType action) throws AlgorithmException {
         switch (action) {
             case EMBED -> embed(viewModel);
+            case EXTRACT -> extract(viewModel);
             default -> throw new AlgorithmException("Unsupported action type: " + action);
         }
     }
@@ -40,6 +41,12 @@ public class AlgorithmController {
         } catch (ImageException e) {
             throw new AlgorithmException("Unable to resolve image cover file: " + e.getMessage());
         }
+    }
+
+    private void extract(final ViewModel viewModel) {
+        System.out.println("Invoked extract () method");
+        System.out.println("- input file:  " + viewModel.getImageFile());
+        System.out.println("- output path: " + viewModel.getOutputPath());
     }
 
     private void saveBytesToFile(byte[] data, File file) throws AlgorithmException {
