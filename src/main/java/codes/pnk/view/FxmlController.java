@@ -42,9 +42,9 @@ public class FxmlController implements Initializable {
     private Pane getContent(final String tabName) {
         try {
             URL tabViewFile = Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml");
-            FXMLLoader fxmlLoader = new FXMLLoader(tabViewFile);
             TabController controller = tabControllers.get(tabName.toLowerCase());
             if (controller != null) {
+                FXMLLoader fxmlLoader = new FXMLLoader(tabViewFile);
                 fxmlLoader.setController(controller);
                 return fxmlLoader.load();
             }
