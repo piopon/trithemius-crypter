@@ -22,6 +22,6 @@
     <Button text="..." fx:id="buttonOutExtract" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
     <!--  EMBED ACTION BUTTON  -->
     <HBox spacing="10" alignment="bottom_right" GridPane.rowIndex="6" GridPane.columnIndex="1">
-        <Button text="EMBED" fx:id="buttonActionExtract"/>
+        <Button text="EXTRACT" fx:id="buttonActionExtract"/>
     </HBox>
 </GridPane>
