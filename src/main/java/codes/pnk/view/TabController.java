@@ -33,24 +33,24 @@ public abstract class TabController implements Initializable {
         return this.viewModel;
     }
 
-    protected void initializeFileField(TextField field, Button button, ObjectProperty<File> property) {
-        updateTextField(field, property);
+    protected void initializeFileField(final TextField field, final Button button, final ObjectProperty<File> prop) {
+        updateTextField(field, prop);
         button.setOnAction(actionEvent -> {
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
-                property.setValue(file);
-                updateTextField(field, property);
+                prop.setValue(file);
+                updateTextField(field, prop);
             }
         });
     }
 
-    protected void initializePathField(TextField field, Button button, ObjectProperty<Path> property) {
-        updateTextField(field, property);
+    protected void initializePathField(final TextField field, final Button button, final ObjectProperty<Path> prop) {
+        updateTextField(field, prop);
         button.setOnAction(actionEvent -> {
             File file = pathChooser.showDialog(viewConfig.stage());
             if (file != null) {
-                property.setValue(file.toPath());
-                updateTextField(field, property);
+                prop.setValue(file.toPath());
+                updateTextField(field, prop);
             }
         });
     }

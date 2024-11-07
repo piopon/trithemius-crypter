@@ -22,12 +22,12 @@ public class TabExtractController extends TabController {
     @FXML
     private Button buttonActionExtract;
 
-    public TabExtractController(ViewModel viewModel, ViewConfig viewConfig) {
+    public TabExtractController(final ViewModel viewModel, final ViewConfig viewConfig) {
         super(viewModel, viewConfig);
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(final URL url, final ResourceBundle resourceBundle) {
         initializeFileField(fieldImageExtract, buttonImageExtract, getViewModel().getImageFile());
         initializePathField(fieldOutExtract, buttonOutExtract, getViewModel().getOutputPath());
         buttonActionExtract.setOnAction(actionEvent -> getViewConfig().action().accept(ViewActionType.EXTRACT));
