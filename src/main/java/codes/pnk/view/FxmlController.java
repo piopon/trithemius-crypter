@@ -41,7 +41,8 @@ public class FxmlController implements Initializable {
 
     private Pane getContent(final String tabName) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml"));
+            URL tabViewFile = Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml");
+            FXMLLoader fxmlLoader = new FXMLLoader(tabViewFile);
             TabController controller = tabControllers.get(tabName.toLowerCase());
             if (controller != null) {
                 fxmlLoader.setController(controller);
