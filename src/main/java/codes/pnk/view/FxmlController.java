@@ -72,7 +72,7 @@ public class FxmlController implements Initializable {
         errorText.setFill(Color.RED);
         errorText.setFont(Font.font("", FontWeight.BOLD, FontPosture.ITALIC, 12));
         VBox appContent = new VBox(errorText);
-        appContent.setPadding(new Insets(100));
+        appContent.setPadding(new Insets(100, 50, 100, 50));
         appContent.setAlignment(Pos.CENTER);
         errorPane.setCenter(appContent);
         return errorPane;
