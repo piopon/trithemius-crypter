@@ -6,6 +6,8 @@ import codes.pnk.model.presentation.ViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -63,6 +65,8 @@ public class FxmlController implements Initializable {
     private Pane getErrorPane(final String message) {
         BorderPane errorPane = new BorderPane();
         VBox appContent = new VBox(new Text(message));
+        appContent.setPadding(new Insets(100));
+        appContent.setAlignment(Pos.CENTER);
         errorPane.setCenter(appContent);
         return errorPane;
     }
