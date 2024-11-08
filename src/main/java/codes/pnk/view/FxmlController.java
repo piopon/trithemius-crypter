@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,5 +55,12 @@ public class FxmlController implements Initializable {
             e.printStackTrace();
             return new BorderPane();
         }
+    }
+
+    private Pane getErrorPane(final String message) {
+        BorderPane errorPane = new BorderPane();
+        VBox appContent = new VBox(new Text(message));
+        errorPane.setCenter(appContent);
+        return errorPane;
     }
 }
