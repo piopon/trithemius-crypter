@@ -12,6 +12,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -64,7 +65,9 @@ public class FxmlController implements Initializable {
 
     private Pane getErrorPane(final String message) {
         BorderPane errorPane = new BorderPane();
-        VBox appContent = new VBox(new Text(message));
+        Text errorText = new Text(message);
+        errorText.setFill(Color.RED);
+        VBox appContent = new VBox(errorText);
         appContent.setPadding(new Insets(100));
         appContent.setAlignment(Pos.CENTER);
         errorPane.setCenter(appContent);
