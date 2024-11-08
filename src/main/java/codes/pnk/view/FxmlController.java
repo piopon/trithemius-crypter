@@ -44,13 +44,16 @@ public class FxmlController implements Initializable {
     private Pane getContent(final String tabName) {
         try {
             URL tabViewFile = Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml");
-            TabController controller = tabControllers.get(tabName.toLowerCase());
-            if (tabViewFile != null && controller != null) {
-                FXMLLoader fxmlLoader = new FXMLLoader(tabViewFile);
-                fxmlLoader.setController(controller);
-                return fxmlLoader.load();
+            if (tabViewFile != null) {
+                return getErrorPane("Cannot find view file for tab: " + tabName.toLowerCase());
             }
-            return new BorderPane();
+            TabController controller = tabControllers.get(tabName.toLowerCase());
+            if (controller == null) {
+                return getErrorPane("Cannot find controller for tab: " + tabName.toLowerCase());
+            }
+            FXMLLoader fxmlLoader = new FXMLLoader(tabViewFile);
+            fxmlLoader.setController(controller);
+            return fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
             return new BorderPane();
