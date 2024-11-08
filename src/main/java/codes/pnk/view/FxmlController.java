@@ -58,7 +58,7 @@ public class FxmlController implements Initializable {
             return fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            return new BorderPane();
+            return getErrorPane(e.getMessage());
         }
     }
 
