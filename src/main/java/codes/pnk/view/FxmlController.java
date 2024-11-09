@@ -50,7 +50,7 @@ public class FxmlController implements Initializable {
     private Pane getContent(final String tabName) {
         try {
             URL tabViewFile = Main.class.getResource("tab-" + tabName.toLowerCase() + ".fxml");
-            if (tabViewFile != null) {
+            if (tabViewFile == null) {
                 return getErrorPane("Cannot find view file for tab: " + tabName.toLowerCase());
             }
             TabController controller = tabControllers.get(tabName.toLowerCase());
