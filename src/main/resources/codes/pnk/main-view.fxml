@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml">
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="EMBED"/>
+        <Tab text="EXTRACT"/>
+    </TabPane>
+    <BorderPane fx:id="mainPane" />
+</VBox>

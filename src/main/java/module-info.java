@@ -1,14 +1,15 @@
 module codes.pnk {
+    requires java.desktop;
     requires javafx.controls;
     requires javafx.fxml;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
-    requires java.desktop;
-
-    opens codes.pnk to javafx.fxml;
 
     exports codes.pnk;
-    opens codes.pnk.controller to javafx.fxml;
     exports codes.pnk.view;
+    exports codes.pnk.model.presentation;
+
+    opens codes.pnk to javafx.fxml;
     opens codes.pnk.view to javafx.fxml;
+    opens codes.pnk.controller to javafx.fxml;
 }
