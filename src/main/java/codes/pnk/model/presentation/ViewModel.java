@@ -9,4 +9,7 @@ import java.util.Objects;
 
 public record ViewModel(ObjectProperty<File> imageFile, ObjectProperty<File> textFile,
                         ObjectProperty<Path> outputPath) {
+    public ViewModel() {
+        this(null, null, null);
+    }
 }
