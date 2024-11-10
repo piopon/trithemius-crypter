@@ -28,8 +28,8 @@ public class TabExtractController extends TabController {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        initializeFileField(fieldImageExtract, buttonImageExtract, getViewModel().getImageFile());
-        initializePathField(fieldOutExtract, buttonOutExtract, getViewModel().getOutputPath());
+        initializeFileField(fieldImageExtract, buttonImageExtract, getViewModel().imageFile());
+        initializePathField(fieldOutExtract, buttonOutExtract, getViewModel().outputPath());
         buttonActionExtract.setOnAction(actionEvent -> getViewConfig().action().accept(ViewActionType.EXTRACT));
     }
 }
