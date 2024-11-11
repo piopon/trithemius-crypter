@@ -31,10 +31,10 @@ public class AlgorithmController {
 
     private void embed(final ViewModel viewModel) throws AlgorithmException {
         try {
-            final Text secret = new Text(viewModel.getTextFile().getValue());
-            final Image cover = new Image(viewModel.getImageFile().getValue());
+            final Text secret = new Text(viewModel.textFile().getValue());
+            final Image cover = new Image(viewModel.imageFile().getValue());
             final byte[] data = algorithm.embed(secret, cover);
-            final File outputFile = viewModel.getOutputPath().getValue().resolve(cover.getName()).toFile();
+            final File outputFile = viewModel.outputPath().getValue().resolve(cover.getName()).toFile();
             saveBytesToFile(data, outputFile);
         } catch (TextException e) {
             throw new AlgorithmException("Unable to resolve secret text file: " + e.getMessage());
@@ -45,11 +45,11 @@ public class AlgorithmController {
 
     private void extract(final ViewModel viewModel) {
         System.out.println("Invoked extract () method");
-        System.out.println("- input file:  " + viewModel.getImageFile());
-        System.out.println("- output path: " + viewModel.getOutputPath());
+        System.out.println("- input file:  " + viewModel.imageFile());
+        System.out.println("- output path: " + viewModel.outputPath());
     }
 
-    private void saveBytesToFile(byte[] data, File file) throws AlgorithmException {
+    private void saveBytesToFile(final byte[] data, final File file) throws AlgorithmException {
         try (OutputStream os = new FileOutputStream(file)) {
             os.write(data);
         } catch (IOException e) {
