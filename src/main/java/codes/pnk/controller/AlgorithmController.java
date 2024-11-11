@@ -49,7 +49,7 @@ public class AlgorithmController {
         System.out.println("- output path: " + viewModel.outputPath());
     }
 
-    private void saveBytesToFile(byte[] data, File file) throws AlgorithmException {
+    private void saveBytesToFile(final byte[] data, final File file) throws AlgorithmException {
         try (OutputStream os = new FileOutputStream(file)) {
             os.write(data);
         } catch (IOException e) {
