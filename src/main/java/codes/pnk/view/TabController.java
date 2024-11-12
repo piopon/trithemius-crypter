@@ -37,10 +37,12 @@ public abstract class TabController implements Initializable {
                                        final ObjectProperty<File> prop) {
         updateTextField(field, prop);
         button.setOnAction(actionEvent -> {
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(type.getDescription(),
-                                                                                    type.getExtension());
             final FileChooser fileChooser = new FileChooser();
-            fileChooser.getExtensionFilters().add(extFilter);
+            FileChooser.ExtensionFilter typeFilter = new FileChooser.ExtensionFilter(type.getDescription(),
+                                                                                     type.getExtension());
+            fileChooser.getExtensionFilters().add(typeFilter);
+            FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("ALL files", "*.*");
+            fileChooser.getExtensionFilters().add(allFilter);
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 prop.setValue(file);
