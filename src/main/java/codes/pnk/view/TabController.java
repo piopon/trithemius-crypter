@@ -15,7 +15,6 @@ import java.nio.file.Path;
 public abstract class TabController implements Initializable {
     protected final static String EMPTY_TEXT_FIELD = "-- none selected --";
 
-    private final FileChooser fileChooser = new FileChooser();
     private final DirectoryChooser pathChooser = new DirectoryChooser();
     private final ViewConfig viewConfig;
     private final ViewModel viewModel;
@@ -38,6 +37,7 @@ public abstract class TabController implements Initializable {
         button.setOnAction(actionEvent -> {
             FileChooser.ExtensionFilter extFilter =
                     new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+            final FileChooser fileChooser = new FileChooser();
             fileChooser.getExtensionFilters().add(extFilter);
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
