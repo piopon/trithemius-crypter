@@ -1,5 +1,6 @@
 package codes.pnk.view;
 
+import codes.pnk.model.presentation.FileType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -32,11 +33,12 @@ public abstract class TabController implements Initializable {
         return this.viewModel;
     }
 
-    protected void initializeFileField(final TextField field, final Button button, final ObjectProperty<File> prop) {
+    protected void initializeFileField(final TextField field, final FileType type, final Button button,
+                                       final ObjectProperty<File> prop) {
         updateTextField(field, prop);
         button.setOnAction(actionEvent -> {
-            FileChooser.ExtensionFilter extFilter =
-                    new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(type.getDescription(),
+                                                                                    type.getExtension());
             final FileChooser fileChooser = new FileChooser();
             fileChooser.getExtensionFilters().add(extFilter);
             File file = fileChooser.showOpenDialog(viewConfig.stage());
