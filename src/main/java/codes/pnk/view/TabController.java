@@ -13,7 +13,7 @@ import java.io.File;
 import java.nio.file.Path;
 
 public abstract class TabController implements Initializable {
-    private final static String EMPTY_TEXT_FIELD = "-- none selected --";
+    protected final static String EMPTY_TEXT_FIELD = "-- none selected --";
 
     private final FileChooser fileChooser = new FileChooser();
     private final DirectoryChooser pathChooser = new DirectoryChooser();

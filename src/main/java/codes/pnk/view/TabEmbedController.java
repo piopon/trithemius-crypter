@@ -36,5 +36,8 @@ public class TabEmbedController extends TabController {
         initializeFileField(fieldImageEmbed, buttonImageEmbed, getViewModel().imageFile());
         initializePathField(fieldOutEmbed, buttonOutEmbed, getViewModel().outputPath());
         buttonActionEmbed.setOnAction(actionEvent -> getViewConfig().action().accept(ViewActionType.EMBED));
+        buttonActionEmbed.disableProperty().bind(fieldTextEmbed.textProperty().isEqualTo(EMPTY_TEXT_FIELD)
+             .or(fieldImageEmbed.textProperty().isEqualTo(EMPTY_TEXT_FIELD))
+             .or(fieldOutEmbed.textProperty().isEqualTo(EMPTY_TEXT_FIELD)));
     }
 }
