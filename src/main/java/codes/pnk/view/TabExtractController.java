@@ -31,5 +31,7 @@ public class TabExtractController extends TabController {
         initializeFileField(fieldImageExtract, buttonImageExtract, getViewModel().imageFile());
         initializePathField(fieldOutExtract, buttonOutExtract, getViewModel().outputPath());
         buttonActionExtract.setOnAction(actionEvent -> getViewConfig().action().accept(ViewActionType.EXTRACT));
+        buttonActionExtract.disableProperty().bind(fieldImageExtract.textProperty().isEqualTo(EMPTY_TEXT_FIELD)
+            .or(fieldOutExtract.textProperty().isEqualTo(EMPTY_TEXT_FIELD)));
     }
 }
