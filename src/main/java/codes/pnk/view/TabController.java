@@ -41,7 +41,8 @@ public abstract class TabController implements Initializable {
             FileChooser.ExtensionFilter typeFilter = new FileChooser.ExtensionFilter(type.getDescription(),
                                                                                      type.getExtension());
             fileChooser.getExtensionFilters().add(typeFilter);
-            FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("ALL files", "*.*");
+            FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter(FileType.ALL.getDescription(),
+                                                                                    FileType.ALL.getExtension());
             fileChooser.getExtensionFilters().add(allFilter);
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {

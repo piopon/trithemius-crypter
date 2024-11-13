@@ -1,6 +1,7 @@
 package codes.pnk.model.presentation;
 
 public enum FileType {
+    ALL("ALL files", "*.*"),
     TEXT("TEXT files (*.txt)", "*.txt"),
     JPEG("JPEG files (*.jpg)", "*.jpg");
 
