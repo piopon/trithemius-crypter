@@ -1,5 +1,6 @@
 package codes.pnk.view;
 
+import codes.pnk.model.presentation.FileType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -13,9 +14,8 @@ import java.io.File;
 import java.nio.file.Path;
 
 public abstract class TabController implements Initializable {
-    private final static String EMPTY_TEXT_FIELD = "-- none selected --";
+    protected final static String EMPTY_TEXT_FIELD = "-- none selected --";
 
-    private final FileChooser fileChooser = new FileChooser();
     private final DirectoryChooser pathChooser = new DirectoryChooser();
     private final ViewConfig viewConfig;
     private final ViewModel viewModel;
@@ -33,9 +33,17 @@ public abstract class TabController implements Initializable {
         return this.viewModel;
     }
 
-    protected void initializeFileField(final TextField field, final Button button, final ObjectProperty<File> prop) {
+    protected void initializeFileField(final TextField field, final FileType type, final Button button,
+                                       final ObjectProperty<File> prop) {
         updateTextField(field, prop);
         button.setOnAction(actionEvent -> {
+            final FileChooser fileChooser = new FileChooser();
+            FileChooser.ExtensionFilter typeFilter = new FileChooser.ExtensionFilter(type.getDescription(),
+                                                                                     type.getExtension());
+            fileChooser.getExtensionFilters().add(typeFilter);
+            FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter(FileType.ALL.getDescription(),
+                                                                                    FileType.ALL.getExtension());
+            fileChooser.getExtensionFilters().add(allFilter);
             File file = fileChooser.showOpenDialog(viewConfig.stage());
             if (file != null) {
                 prop.setValue(file);

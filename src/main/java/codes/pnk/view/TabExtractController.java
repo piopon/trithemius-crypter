@@ -1,5 +1,6 @@
 package codes.pnk.view;
 
+import codes.pnk.model.presentation.FileType;
 import codes.pnk.model.presentation.ViewActionType;
 import codes.pnk.model.presentation.ViewConfig;
 import codes.pnk.model.presentation.ViewModel;
@@ -28,8 +29,10 @@ public class TabExtractController extends TabController {
 
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        initializeFileField(fieldImageExtract, buttonImageExtract, getViewModel().imageFile());
+        initializeFileField(fieldImageExtract, FileType.JPEG,  buttonImageExtract, getViewModel().imageFile());
         initializePathField(fieldOutExtract, buttonOutExtract, getViewModel().outputPath());
         buttonActionExtract.setOnAction(actionEvent -> getViewConfig().action().accept(ViewActionType.EXTRACT));
+        buttonActionExtract.disableProperty().bind(fieldImageExtract.textProperty().isEqualTo(EMPTY_TEXT_FIELD)
+            .or(fieldOutExtract.textProperty().isEqualTo(EMPTY_TEXT_FIELD)));
     }
 }

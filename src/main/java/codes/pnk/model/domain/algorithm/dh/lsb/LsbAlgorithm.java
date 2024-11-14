@@ -19,7 +19,7 @@ public class LsbAlgorithm extends Algorithm {
                 lsbOS.flush();
                 outputImage = lsbOS.getOutput();
             }
-            return new Image(secretText.getPath(), outputImage).getRawImageData();
+            return new Image(coverImage.getPath(), outputImage).getRawImageData();
         } catch (IOException | ImageException e) {
             throw new AlgorithmException(e);
         }
